@@ -10,12 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419204300) do
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-
 ActiveRecord::Schema.define(version: 20170419213541) do
 
   create_table "profiles", force: :cascade do |t|
@@ -27,7 +21,6 @@ ActiveRecord::Schema.define(version: 20170419213541) do
     t.string   "profile_img"
     t.integer  "user_id"
     t.integer  "post_id"
->>>>>>> juliet
   end
 
 end
