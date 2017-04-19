@@ -15,6 +15,19 @@ ActiveRecord::Schema.define(version: 20170419204300) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
+
+ActiveRecord::Schema.define(version: 20170419213541) do
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "fname"
+    t.string   "lname"
+    t.string   "email"
+    t.datetime "bday"
+    t.text     "bio"
+    t.string   "profile_img"
+    t.integer  "user_id"
+    t.integer  "post_id"
+>>>>>>> juliet
   end
 
 end
