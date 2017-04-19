@@ -47,11 +47,8 @@ DEPENDENCIES
   sqlite3
 
 RUBY VERSION
-<<<<<<< HEAD
    ruby 2.3.1p112
-=======
-   ruby 2.3.3p222
->>>>>>> 8212b68ba184746deb6d07535b38506d76628f82
+
 
 BUNDLED WITH
    1.14.6
