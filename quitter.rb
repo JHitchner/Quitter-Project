@@ -5,7 +5,7 @@ require "bundler/setup"
 
 #require "./models"
 set :database, "sqlite3:quitterbase.sqlite3"
-#set sessions, true
+#set sessions: true
 get "/profile" do
   erb :profile
 
