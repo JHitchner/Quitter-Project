@@ -66,10 +66,8 @@ post "/delete_acount" do
 end
 
 get "/profile_view/:id" do
-  erb :profile_view
 	@profile = Profile.find(params['id'])
-  # puts @profile.inspect
-  # puts params.inspect
+  erb :profile_view
 end
 
 get "/profile_new" do
