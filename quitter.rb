@@ -22,7 +22,7 @@ post "/sign-up" do
     username: params[:username],
     password: params[:password]
   )
-    redirect "/profile_create"
+    redirect "/profile_new"
 end
 
 get "/sign-in" do
@@ -67,7 +67,7 @@ end
 
 get "/profile_view/:id" do
   erb :profile_view
-	# @profile = Profile.find(params[:id])
+	@profile = Profile.find(params['id'])
   # puts @profile.inspect
   # puts params.inspect
 end
@@ -77,13 +77,12 @@ get "/profile_new" do
 end
 
 post "/profile_new" do
-  puts "params", params.inspect
+  # puts "params", params.inspect
   @profile =Profile.create(email:params[:email], bday:params[:bday], bio:params[:bio])
-  redirect "/profile_view/"+ @profile.id.to_s
-  
+  # redirect "/profile_view/"+ @profile.id.to_s
+  redirect "/profile_view/#{@profile.id}"
 end
 
 get "/profile_delete" do
   erb :profile_delete
-
 end
