@@ -48,11 +48,15 @@ DEPENDENCIES
 
 RUBY VERSION
 <<<<<<< HEAD
+<<<<<<< HEAD
    ruby 2.3.1p112
 
 =======
    ruby 2.3.3p222
 >>>>>>> fc87f02bbc46d1b7d34d1d85e3ff8fe506fdd7e3
+=======
+   ruby 2.4.0p0
+>>>>>>> angelique
 
 BUNDLED WITH
    1.14.6
