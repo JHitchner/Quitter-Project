@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170419213541) do
 
+
   create_table "profiles", force: :cascade do |t|
     t.string   "fname"
     t.string   "lname"
@@ -22,10 +23,11 @@ ActiveRecord::Schema.define(version: 20170419213541) do
     t.integer  "user_id"
     t.integer  "post_id"
   end
-  
+
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
+    t.string  "username"
+    t.string  "password"
+    t.integer "profile_id"
   end
 
 end
