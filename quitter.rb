@@ -67,6 +67,8 @@ end
 
 get "/profile_view/:id" do
 	@profile = Profile.find(params['id'])
+  # @profile.current_user
+  # @user = User.find(current_user)
   erb :profile_view
 end
 
@@ -76,7 +78,7 @@ end
 
 post "/profile_new" do
   # puts "params", params.inspect
-  @profile =Profile.create(email:params[:email], bday:params[:bday], bio:params[:bio])
+  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: User.current_user)
   # redirect "/profile_view/"+ @profile.id.to_s
   redirect "/profile_view/#{@profile.id}"
 end
