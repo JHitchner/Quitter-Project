@@ -18,7 +18,7 @@ get "/sign-up" do
 end
 
 post "/sign-up" do
-  User.new(
+  User.create(
     username: params[:username],
     password: params[:password]
   )
