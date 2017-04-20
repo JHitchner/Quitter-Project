@@ -22,16 +22,16 @@ post "/sign-up" do
     username: params[:username],
     password: params[:password]
   )
-    redirect "/"
+    redirect "/profile_create"
 end
 
 get "/sign-in" do
   erb :sign_in_form
 end
 
-get "/login-fail" do
-  erb :sign_in_fail
-end
+# get "/login-fail" do
+#   erb :sign_in_fail
+# end
 
 post "/sign-in" do
   @user = User.where(username: params[:username]).first
@@ -47,6 +47,22 @@ end
 
 get "/sign-out" do
   session[user_id]=nil
+end
+
+get "/delete_account" do
+  erb :account_delete
+end
+
+post "/delete_acount" do
+  @user = User.where(username: params[:username]).first
+  if @user.password == params[:password]
+    User.delete(
+      username: params[:id]
+    )
+    flash[:notice] = "Account Deleted!"
+    redirect "/"
+  else
+  end
 end
 
 get "/profile_view" do
