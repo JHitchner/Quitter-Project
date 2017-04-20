@@ -21,8 +21,8 @@ post "/sign-up" do
   User.new(
     username: params[:username],
     password: params[:password]
+  )
     redirect "/"
-)
 end
 
 get "/sign-in" do
