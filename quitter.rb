@@ -7,12 +7,6 @@ require "./models"
 set :database, "sqlite3:quitterbase.sqlite3"
 set :sessions, true
 
-def current_user
-  if session[:user_id]
-    User.find(session[:user_id])
-  end
-end
-
 get "/sign-up" do
   erb :sign_up_form
 end
@@ -22,8 +16,9 @@ post "/sign-up" do
     username: params[:username],
     password: params[:password]
   )
-  user=current_user
-  redirect "/profile_new/#{user}"
+  # @user = User.find(session[@user.id])
+  # redirect "/profile_new/#{user}"
+  redirect "/profile_new?user_id=#{@user.id}"
 end
 
 get "/sign-in" do
@@ -34,6 +29,10 @@ post "/sign-in" do
   @user = User.where(username: params[:username]).first
   if @user.password == params[:password]
     session[:user_id]=@user.id
+    @profile=Profile.where(user_id: @user).first
+    if @profile.user_id == "nil"
+      @profile.user_id=@user.id
+    end
     flash[:notice] = "Login successful!"
     redirect "/"
   else
@@ -42,8 +41,15 @@ post "/sign-in" do
   end
 end
 
-get "/" do
+def current_user
+  if session[:user_id]
+    User.find(session[:user_id])
+  end
+end
+
+get "/sign-out" do
   session[:user_id]=nil
+  redirect "/"
 end
 
 get "/delete_account" do
