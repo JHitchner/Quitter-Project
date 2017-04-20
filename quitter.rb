@@ -35,15 +35,13 @@ end
 
 post "/sign-in" do
   @user = User.where(username: params[:username])
-  if @user.password==params[:password]
+  if @user.password == params[:password]
     session[:user_id]=@user.id
-      if
-        flash[:notice] = "Login successful!"
-        redirect "/"
-      else
-        flash[:alert] = "Login failed."
-    	redirect "/sign-in"
-      end
+    flash[:notice] = "Login successful!"
+    redirect "/"
+  else
+    flash[:alert] = "Login failed."
+    redirect "/sign-in"
   end
 end
 
