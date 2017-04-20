@@ -56,12 +56,11 @@ end
 post "/delete_acount" do
   @user = User.where(username: params[:username]).first
   if @user.password == params[:password]
-    User.delete(
-      username: params[:id]
-    )
+    @user.delete()
     flash[:notice] = "Account Deleted!"
     redirect "/"
   else
+    puts "failed to delete"
   end
 end
 
