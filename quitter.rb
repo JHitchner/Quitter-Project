@@ -62,23 +62,22 @@ post "/delete_acount" do
   end
 end
 
-get "/profile_view" do
+get "/profile_view/:id" do
+	@profile = Profile.find(params['id'])
   erb :profile_view
-
 end
 
 get "/profile_new" do
   erb :profile_create
-
 end
 
 post "/profile_new" do
-  @profile = Profile.where(email: params[:email], bday: params[:bday], bio: params[:bio]).first
-  redirect "/profile_view"
+  # puts "params", params.inspect
+  @profile =Profile.create(email:params[:email], bday:params[:bday], bio:params[:bio])
+  # redirect "/profile_view/"+ @profile.id.to_s
+  redirect "/profile_view/#{@profile.id}"
 end
-
 
 get "/profile_delete" do
   erb :profile_delete
-
 end

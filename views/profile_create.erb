@@ -1,9 +1,10 @@
 
-<form id="create_profile" action="/profile_create" method="post">
-  <input type="text" name="[profile]fname" value="" placeholder="FirstName">
-  <input type="text" name="[profile]lname" value="" placeholder="LastName">
-  <input type="text" name="[profile]email" value="" placeholder="youremail@gmail.com">
-  <input type="text" name="[profile]bday" value="" placeholder="mm/dd/yyyy">
-  <textarea name="[profile]bio" rows="8" cols="80"></textarea>
+<form id="create_profile" action="/profile_new" method="post">
+  <input type="text" name="fname" placeholder="FirstName">
+  <input type="text" name="lname" placeholder="LastName">
+  <input type="text" name="email"  placeholder="youremail@gmail.com">
+  <input type="text" name="bday"  placeholder="mm/dd/yyyy">
+  <textarea name="bio" rows="8" cols="80"></textarea>
+
+  <button id="save" type="submit" form="create_profile" name="button">Save</button>
 </form>
-<button id="save" type="submit" form="create_profile" name="button">Save</button>
