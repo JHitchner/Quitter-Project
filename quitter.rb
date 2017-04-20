@@ -68,23 +68,20 @@ end
 get "/profile_view/:id" do
   erb :profile_view
 	# @profile = Profile.find(params[:id])
-  puts @profile.inspect
-  puts params.inspect
+  # puts @profile.inspect
+  # puts params.inspect
 end
 
 get "/profile_new" do
   erb :profile_create
-
 end
 
 post "/profile_new" do
   puts "params", params.inspect
-   @profile = Profile.create(email: params[:email], bday: params[:bday], bio: params[:bio])
-  #  @profile.save
-  # redirect "/profile_view/"+ @profile.id.to_s
-  redirect "/"
+  @profile =Profile.create(email:params[:email], bday:params[:bday], bio:params[:bio])
+  redirect "/profile_view/"+ @profile.id.to_s
+  
 end
-
 
 get "/profile_delete" do
   erb :profile_delete
