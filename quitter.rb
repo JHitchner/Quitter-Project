@@ -36,6 +36,7 @@ end
 post "/sign-in" do
   @user = User.where(username: params[:username]).first
   if @user.password == params[:password]
+    puts "i'm here"
     session[:user_id]=@user.id
     flash[:notice] = "Login successful!"
     redirect "/"
