@@ -77,7 +77,7 @@ get "/profile_new" do
 end
 
 post "/profile_new" do
-  # puts "params", params.inspect
+  #puts "params", params.inspect
   @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: User.current_user)
   # redirect "/profile_view/"+ @profile.id.to_s
   redirect "/profile_view/#{@profile.id}"
