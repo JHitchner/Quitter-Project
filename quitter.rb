@@ -34,7 +34,7 @@ get "/login-fail" do
 end
 
 post "/sign-in" do
-  @user = User.where(username: params[:username]).first
+  @user = User.where(username: params[:username])
   if @user.password==params[:password]
     session[:user_id]=@user.id
       if
