@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170419213541) do
 
-
   create_table "profiles", force: :cascade do |t|
     t.string   "fname"
     t.string   "lname"

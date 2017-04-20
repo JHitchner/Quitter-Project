@@ -18,20 +18,17 @@ get "/sign-up" do
 end
 
 post "/sign-up" do
-  User.create(
+  @user=User.create(
     username: params[:username],
     password: params[:password]
   )
-    redirect "/profile_create"
+  user=current_user
+  redirect "/profile_new/#{user}"
 end
 
 get "/sign-in" do
   erb :sign_in_form
 end
-
-# get "/login-fail" do
-#   erb :sign_in_fail
-# end
 
 post "/sign-in" do
   @user = User.where(username: params[:username]).first
@@ -45,12 +42,13 @@ post "/sign-in" do
   end
 end
 
-get "/sign-out" do
-  session[user_id]=nil
+get "/" do
+  session[:user_id]=nil
 end
 
 get "/delete_account" do
   erb :account_delete
+  session[:user_id]=nil
 end
 
 post "/delete_acount" do
