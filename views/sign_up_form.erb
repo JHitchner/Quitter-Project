@@ -9,3 +9,14 @@
    <input id="sign_up_btn" type="submit">
   </form>
 </div>
+
+
+<form id="create_profile" action="/sign-up" method="post">
+  <input type="text" name="fname" placeholder="FirstName">
+  <input type="text" name="lname" placeholder="LastName">
+  <input type="text" name="email"  placeholder="youremail@gmail.com">
+  <input type="text" name="bday"  placeholder="mm/dd/yyyy">
+  <textarea name="bio" rows="8" cols="80"></textarea>
+
+  <button id="save" type="submit" form="create_profile" name="button">Save</button>
+</form>
