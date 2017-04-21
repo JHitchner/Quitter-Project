@@ -10,3 +10,20 @@
     height: 400px;
     margin: 33% auto;
 }
+#profile_name{
+  position: relative;
+  top:100px;
+  font-size: 30px;
+  color:blue;
+}
+
+#edit_form{
+  position: relative;
+  left:200px;
+  top:300px;
+}
+#profile_email{
+  position: relative;
+  color: blue;
+  top:100px;
+}

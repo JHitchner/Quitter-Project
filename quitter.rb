@@ -64,26 +64,26 @@ post "/delete_acount" do
 end
 
 get "/profile_view/:id" do
-  # session[:user_id]
-  # @profile.user_id = Profile.
+  session[:user_id]
   @profile = Profile.find(params['id'])
   erb :profile_view
 end
 
 get "/profile_new" do
-
   erb :profile_create
 end
 
 post "/profile_new" do
-  # @user = session[:user_id]
-  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: session[:user_id])
-  #redirect "/profile_view/"+ @profile.id.to_s
-  # redirect "/profile_view/#{@profile.id}"
-  redirect "/profile_view/#{@profile.id}"
-
+  session[:user_id]
+  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id:params[@user.id])
+  redirect "profile_view/#{profile.id}"
 end
 
-get "/profile_delete" do
-  erb :profile_delete
+put "/profile_edit/:id" do
+  session[:user_id]
+  @profile = Profile.find(params[:id])
+  @profile.update(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio])
+  @profile.save
+  redirect "/profile_view/#{@profile.id}"
+
 end
