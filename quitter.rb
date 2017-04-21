@@ -16,8 +16,8 @@ post "/sign-up" do
     username: params[:username],
     password: params[:password]
   )
-  # redirect "/profile_new/#{user}"
-  redirect "/profile_new?user_id=#{@user.id}"
+  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user.id)
+  redirect "profile_view/?id=#{@profile.id}"
 end
 
 get "/sign-in" do
@@ -29,11 +29,8 @@ post "/sign-in" do
   if @user.password == params[:password]
     session[:user_id]=@user.id
     @profile=Profile.where(user_id: @user.id).first
-    if !@profile.nil?
-      @user.update(profile_id: @profile.id)
-    end
     flash[:notice] = "Login successful!"
-    redirect "/profile_view"
+    redirect "/profile_view/?id=#{@profile.id}"
   else
     flash[:notice] = "Login failed."
     redirect "/sign-in"
@@ -67,22 +64,9 @@ post "/delete_acount" do
   end
 end
 
-get "/profile_view/:id" do
+get "/profile_view/" do
   @profile = Profile.find(params['id'])
-  @user.profile_id = @profile.id
-
   erb :profile_view
-end
-
-get "/profile_new?:id" do
-
-  erb :profile_create
-end
-
-post "/profile_new?:id" do
-  @user_id = session[:user_id]
-  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user_id)
-  redirect "profile_view/#{@profile.id}"
 end
 
 put "/profile_edit/:id" do
