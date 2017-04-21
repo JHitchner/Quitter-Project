@@ -64,17 +64,19 @@ end
 
 get "/profile_view/:id" do
   @profile = Profile.find(params['id'])
+  @user.profile_id = @profile.id
+
   erb :profile_view
 end
 
-get "/profile_new/" do
+get "/profile_new?:id" do
 
   erb :profile_create
 end
 
-post "/profile_new/" do
-  @user_id = 'id'
-  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id:params[@user_id])
+post "/profile_new?:id" do
+  @user_id = session[:user_id]
+  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user_id)
   redirect "profile_view/#{@profile.id}"
 end
 
