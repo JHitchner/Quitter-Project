@@ -66,6 +66,7 @@ end
 
 get "/profile_view/" do
   @profile = Profile.find(params['id'])
+
   erb :profile_view
 end
 
@@ -76,5 +77,32 @@ put "/profile_edit/:id" do
   @profile.update(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio])
   @profile.save
   redirect "/profile_view/#{@profile.id}"
+
+end
+
+# //posts
+
+get "/show-post" do
+  @users = User.all
+  @posts= Post.all
+  erb  :profile_view
+end
+
+post '/signup' do
+  puts "THESE ARE THE PARAMS" + params.inspect
+  @userd = User.create(username: params[:username], password: params[:password], age: params[:age], name: params[:name], email: params[:email])
+  redirect '/logins'
+end
+
+post '/posts' do
+
+if session[:user_id]
+  @post = Post.create(content: params[:postcontent], post_title: params[:post_title], user.find:session[:user_id] )
+  redirect '/show-post'
+
+else
+    flash[:alert] = "you need to sign in to post"
+  end
+  redirect"/show-post"
 
 end

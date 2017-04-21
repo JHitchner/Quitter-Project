@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170419213541) do
+ActiveRecord::Schema.define(version: 20170421163416) do
+
+  create_table "posts", force: :cascade do |t|
+    t.string "post_title"
+    t.string "post_body"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string   "fname"
