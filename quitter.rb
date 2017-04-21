@@ -22,8 +22,7 @@ post "/sign-up" do
     username: params[:username],
     password: params[:password]
   )
-  user=current_user
-  redirect "/profile_new/#{user}"
+    redirect "/profile_new?user_id=#{@user.id}"
 end
 
 get "/sign-in" do
@@ -36,9 +35,11 @@ post "/sign-in" do
     session[:user_id]=@user.id
     flash[:notice] = "Login successful!"
     redirect "/"
+
   else
     flash[:alert] = "Login failed."
     redirect "/sign-in"
+
   end
 end
 
@@ -63,21 +64,24 @@ post "/delete_acount" do
 end
 
 get "/profile_view/:id" do
-	@profile = Profile.find(params['id'])
-  # @profile.current_user
-  # @user = User.find(current_user)
+  # session[:user_id]
+  # @profile.user_id = Profile.
+  @profile = Profile.find(params['id'])
   erb :profile_view
 end
 
 get "/profile_new" do
+
   erb :profile_create
 end
 
 post "/profile_new" do
-  #puts "params", params.inspect
-  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: User.current_user)
-  # redirect "/profile_view/"+ @profile.id.to_s
+  # @user = session[:user_id]
+  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: session[:user_id])
+  #redirect "/profile_view/"+ @profile.id.to_s
+  # redirect "/profile_view/#{@profile.id}"
   redirect "/profile_view/#{@profile.id}"
+
 end
 
 get "/profile_delete" do
