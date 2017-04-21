@@ -87,3 +87,30 @@ put "/profile_edit/:id" do
   redirect "/profile_view/#{@profile.id}"
 
 end
+
+# //posts
+
+get "/" do
+  @users = User.all
+  @posts= Post.all
+  erb  :index
+end
+
+post '/signup' do
+  puts "THESE ARE THE PARAMS" + params.inspect
+  @userd = User.create(username: params[:username], password: params[:password], age: params[:age], name: params[:name], email: params[:email])
+  redirect '/logins'
+end
+
+post '/posts' do
+
+if session[:user_id]
+  @post = Post.create(content: params[:postcontent], post_title: params[:post_title], user_id:session[:user_id] )
+  redirect '/'
+
+else
+    flash[:alert] = "you need to sign in to post"
+  end
+  redirect'/create'
+
+end
