@@ -33,9 +33,9 @@ post "/sign-in" do
       @user.update(profile_id: @profile.id)
     end
     flash[:notice] = "Login successful!"
-    redirect "/"
+    redirect "/profile_view"
   else
-    flash[:alert] = "Login failed."
+    flash[:notice] = "Login failed."
     redirect "/sign-in"
   end
 end
@@ -68,21 +68,28 @@ post "/delete_acount" do
 end
 
 get "/profile_view/:id" do
-	@profile = Profile.find(params['id'])
+  @profile = Profile.find(params['id'])
+  @user.profile_id = @profile.id
+
   erb :profile_view
 end
 
-get "/profile_new" do
+get "/profile_new?:id" do
+
   erb :profile_create
 end
 
-post "/profile_new" do
-  # puts "params", params.inspect
-  @profile =Profile.create(email:params[:email], bday:params[:bday], bio:params[:bio])
-  # redirect "/profile_view/"+ @profile.id.to_s
-  redirect "/profile_view/#{@profile.id}"
+post "/profile_new?:id" do
+  @user_id = session[:user_id]
+  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user_id)
+  redirect "profile_view/#{@profile.id}"
 end
 
-get "/profile_delete" do
-  erb :profile_delete
+put "/profile_edit/:id" do
+  session[:user_id]
+  @profile = Profile.find(params[:id])
+  @profile.update(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio])
+  @profile.save
+  redirect "/profile_view/#{@profile.id}"
+
 end
