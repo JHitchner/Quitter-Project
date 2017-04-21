@@ -26,22 +26,15 @@ end
 
 post "/sign-in" do
   @user = User.where(username: params[:username]).first
-  if @user.password == params[:password]
-    session[:user_id]=@user.id
-    @profile=Profile.where(user_id: @user.id).first
-    flash[:notice] = "Login successful!"
-    redirect "/profile_view/?id=#{@profile.id}"
-  else
-    flash[:notice] = "Login failed."
-    redirect "/sign-in"
+ if @user.password == params[:password]
+   session[:user_id]=@user.id
+   @profile=Profile.where(user_id: @user.id).first
+   flash[:notice] = "Login successful!"
+   redirect "/profile_view/?id=#{@profile.id}"
+ else
+   flash[:notice] = "Login failed."
+   redirect "/sign-in"
   end
-end
-
-def current_user
-  if session[:user_id]
-    User.find(session[:user_id])
-  end
-end
 
 get "/sign-out" do
   session[:user_id]=nil
@@ -75,5 +68,32 @@ put "/profile_edit/:id" do
   @profile.update(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio])
   @profile.save
   redirect "/profile_view/#{@profile.id}"
+
+end
+
+# //posts
+
+get "/show-post" do
+  @users = User.all
+  @posts= Post.all
+  erb  :profile_view
+end
+
+post '/signup' do
+  puts "THESE ARE THE PARAMS" + params.inspect
+  @userd = User.create(username: params[:username], password: params[:password], age: params[:age], name: params[:name], email: params[:email])
+  redirect '/logins'
+end
+
+post '/posts' do
+
+if session[:user_id]
+  @post = Post.create(content: params[:postcontent], post_title: params[:post_title], user.find:session[:user_id] )
+  redirect '/show-post'
+
+else
+    flash[:alert] = "you need to sign in to post"
+  end
+  redirect"/show-post"
 
 end
