@@ -16,7 +16,6 @@ post "/sign-up" do
     username: params[:username],
     password: params[:password]
   )
-  # @user = User.find(session[@user.id])
   # redirect "/profile_new/#{user}"
   redirect "/profile_new?user_id=#{@user.id}"
 end
@@ -29,9 +28,9 @@ post "/sign-in" do
   @user = User.where(username: params[:username]).first
   if @user.password == params[:password]
     session[:user_id]=@user.id
-    @profile=Profile.where(user_id: @user).first
-    if @profile.user_id == "nil"
-      @profile.user_id=@user.id
+    @profile=Profile.where(user_id: @user.id).first
+    if !@profile.nil?
+      @user.update(profile_id: @profile.id)
     end
     flash[:notice] = "Login successful!"
     redirect "/"
