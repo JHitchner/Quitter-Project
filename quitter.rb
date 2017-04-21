@@ -63,7 +63,7 @@ post "/delete_acount" do
 end
 
 get "/profile_view/:id" do
-  @profile = Profile.find(params['id'])
+  @profile = Profile.find(params[:id])
   @user.profile_id = @profile.id
 
   erb :profile_view
@@ -91,10 +91,10 @@ end
 
 # //posts
 
-get "/" do
+get "/show-post" do
   @users = User.all
   @posts= Post.all
-  erb  :index
+  erb  :profile_view
 end
 
 post '/signup' do
@@ -106,12 +106,12 @@ end
 post '/posts' do
 
 if session[:user_id]
-  @post = Post.create(content: params[:postcontent], post_title: params[:post_title], user_id:session[:user_id] )
-  redirect '/'
+  @post = Post.create(content: params[:postcontent], post_title: params[:post_title], user.find:session[:user_id] )
+  redirect '/show-post'
 
 else
     flash[:alert] = "you need to sign in to post"
   end
-  redirect'/create'
+  redirect"/show-post"
 
 end
