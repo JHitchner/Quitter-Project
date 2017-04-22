@@ -47,6 +47,7 @@ post "/sign-in" do
    flash[:notice] = "Login failed."
    redirect "/sign-in"
   end
+end
 
 get "/sign-out" do
   session[:user_id]=nil
