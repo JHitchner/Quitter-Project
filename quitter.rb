@@ -30,7 +30,6 @@ post "/sign-up" do
   )
   @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user.id)
   redirect "profile_view/?id=#{@profile.id}"
-
 end
 
 get "/sign-in" do
@@ -48,6 +47,10 @@ post "/sign-in" do
    flash[:notice] = "Login failed."
    redirect "/sign-in"
   end
+
+get "/sign-out" do
+  session[:user_id]=nil
+  redirect "/"
 end
 
 # get "/" do
@@ -78,7 +81,6 @@ get "/profile_view/" do
   end
   erb :profile_view
 end
-
 
 put "/profile_edit/:id" do
   session[:user_id]

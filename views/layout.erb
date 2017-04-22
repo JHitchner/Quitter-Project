@@ -8,7 +8,8 @@
   <body>
     <a href="#">Post</a>
     <% if session[:user_id] %>
-    <a href="/sign-out">Sign Out</a>
+    <a id="sign_out" href="#">Sign Out onClick="function(){  <%session[:user_id]=nil%>
+  <%redirect "/"%>}"</a>
     <% else %>
     <a href="/sign-up">Register</a>
     <a href="/sign-in">Sign In</a>
@@ -19,5 +20,6 @@
       <% end %>
     </div>
     <%= yield %>
+    <script type"text/javascript" src="quitter.js"></script>
   </body>
 </html>
