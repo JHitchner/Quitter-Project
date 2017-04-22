@@ -6,9 +6,9 @@
     <title></title>
   </head>
   <body>
+    <a href="#">Post</a>
     <% if session[:user_id] %>
     <a href="/sign-out">Sign Out</a>
-    <a href="/create">Post</a>
     <% else %>
     <a href="/sign-up">Register</a>
     <a href="/sign-in">Sign In</a>

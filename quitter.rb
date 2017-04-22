@@ -5,13 +5,19 @@ require "bundler/setup"
 require "./models"
 
 set :database, "sqlite3:quitterbase.sqlite3"
-set :sessions, true
+enable :sessions
 
-# def current_user
-#   if session[:user_id]
-#     User.find(session[:user_id])
-#   end
-# end
+def current_user
+  if session[:user_id]
+    User.find(session[:user_id])
+  end
+end
+#
+get "/" do
+  session[:user_id]=nil
+  @post = Post.all
+  erb :home
+end
 
 get "/sign-up" do
   erb :sign_up_form
@@ -44,9 +50,9 @@ post "/sign-in" do
   end
 end
 
-get "/" do
-  session[:user_id]=nil
-end
+# get "/" do
+#   session[:user_id]=nil
+# end
 
 get "/delete_account" do
   erb :account_delete
@@ -65,7 +71,11 @@ post "/delete_acount" do
 end
 
 get "/profile_view/" do
+  @user = User.where(params[:post_id])
   @profile = Profile.find(params['id'])
+  if @user.nil?
+    @post = Post.find(params[:user_id])
+  end
   erb :profile_view
 end
 
@@ -77,14 +87,17 @@ put "/profile_edit/:id" do
   @profile.save
   redirect "/profile_view/?id=#{@profile.id}"
 end
+get "/post/:id" do
+  erb :post
+end
+post "/post/" do
+    @profile = Profile.find(params['id'])
+    @post = Post.create(post_body: params[:post_body], post_title: params[:post_title], profile_id: @profile.id)
+  redirect "/"
+end
 
 #//posts
 
-get "/show-post" do
-  @users = User.all
-  @posts= Post.all
-  erb  :profile_view
-end
 
 # post '/signup' do
 #   puts "THESE ARE THE PARAMS" + params.inspect
@@ -92,17 +105,6 @@ end
 #   redirect '/logins'
 # end
 
-post '/posts' do
-
-  if session[:user_id]
-    @post = Post.create(content: params[:postcontent], post_title: params[:post_title], user_id: session[:user_id])
-    redirect '/show-post'
-  else
-    flash[:alert] = "you need to sign in to post"
-  end
-  redirect"/show-post"
-
- end
 #
 # get ‘/sign_out’ do
 #   session[:user_id] = nil
@@ -150,6 +152,6 @@ post '/posts' do
 #
 # put “/edits/:id” do
 #   @post = Post.find(params[:id])
-#   @post.update(content: params[:postcontent], post_title: params[:post_title])
+#   @post.update(content: params[:post_body], post_title: params[:post_title])
 #   redirect “/posts/#{@post.id}”
 # end

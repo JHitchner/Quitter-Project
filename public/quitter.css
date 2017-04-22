@@ -27,3 +27,10 @@
   color: blue;
   top:100px;
 }
+.home{
+  color: black;
+  position: relative;
+  height:300px;
+  width: 300px;
+  font-size: 30px;
+}
