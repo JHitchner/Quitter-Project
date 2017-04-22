@@ -3,9 +3,14 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/quitter.css"
-    <title></title>
+    <title> Welcome to Quitter</title>
   </head>
   <body>
+    <!-- <form  action="/search" method="get">
+      <input type="search" name="">
+      <input type="submit" name="">
+   </form> -->
+
     <a href="#">Post</a>
     <% if session[:user_id] %>
     <a id="sign_out" href="#">Sign Out onClick="function(){  <%session[:user_id]=nil%>

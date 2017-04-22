@@ -12,7 +12,7 @@ def current_user
     User.find(session[:user_id])
   end
 end
-#
+
 get "/" do
   session[:user_id]=nil
   @post = Post.all
@@ -76,9 +76,11 @@ end
 
 get "/profile_view/" do
   @user = User.where(params[:post_id])
-  @profile = Profile.find(params['id'])
+  @profile = Profile.find(params[:id])
+  @post = Post.where(params[:id])
+
   if @user.nil?
-    @post = Post.find(params[:user_id])
+    @post = Post.find(params[:id])
   end
   erb :profile_view
 end
@@ -90,14 +92,19 @@ put "/profile_edit/:id" do
   @profile.save
   redirect "/profile_view/?id=#{@profile.id}"
 end
-get "/post/:id" do
+get "/post/" do
   erb :post
 end
-post "/post/" do
-    @profile = Profile.find(params['id'])
-    @post = Post.create(post_body: params[:post_body], post_title: params[:post_title], profile_id: @profile.id)
-  redirect "/"
+post "/post/:id" do
+    @profile_id = params['id']
+    @post = Post.create(post_body: params[:post_body], post_title: params[:post_title], profile_id: @profile_id )
+  redirect "/?id=#{@profile_id}"
 end
+
+# get "/show_post" do
+# 	@post = Post.find(params[:id])
+# 	erb :profile_view
+# end
 
 #//posts
 
