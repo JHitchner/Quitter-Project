@@ -1,5 +1,10 @@
-<div id="post_modal">
+
   <h2>Create Post</h2>
+  <div class="post_background">
+
+  </div>
+<div class="post_create">
+
   <form action="/post/:id"method="post"role="form">
    <div class="form-group">
      <input id="post_title" class="form-control" name="post_title" type="text"  style="width=90%" placeholder="Title"/>
@@ -9,6 +14,6 @@
      <textarea id="post_body" name="post_body" class="form-control" rows="10" placeholder="Body"></textarea>
      <br><br>
    </div>
-   <button type="submit" class="btn btn-success">Submit</button>
+   <button id="post_btn" type="submit" class="btn btn-success">Submit</button>
   </form>
 </div>

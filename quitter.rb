@@ -28,6 +28,7 @@ post "/sign-up" do
     username: params[:username],
     password: params[:password]
   )
+
   @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user.id)
   redirect "profile_view/?id=#{@profile.id}"
 end

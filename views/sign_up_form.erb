@@ -1,27 +1,30 @@
+<p id="create_account">Sign Up With Quitter</p>
+
+
  <div class="sign">
   <form id="sign_up_f" class="sign_f" action="/sign-up" method="post">
-    <label class="sign" for="username">Username:</label>
-    <input id="sign_up_u" type="text" name="username">
-    <label class="sign" for="password">Password:</label>
-    <input id="sign__up_p" type="password" name="password" min="8">
-    <label class="sign" for="pwdconf">Confirm Password:</label>
-    <input id="sign__up_pconf" type="password" name="pwdconf" min="8">
-    <input type="text" name="fname" placeholder="FirstName">
-    <input type="text" name="lname" placeholder="LastName">
-    <input type="text" name="email"  placeholder="youremail@gmail.com">
-    <input type="text" name="bday"  placeholder="mm/dd/yyyy">
-    <textarea name="bio" rows="8" cols="80"></textarea>
-   <input id="sign_up_btn" type="submit">
+    <input class="sign_upf" id="sign_up_u" type="text" name="username" placeholder="Username">
+    <input class="sign_upf" id="sign__up_p" type="password" name="password" min="8" placeholder="Password">
+    <input class="sign_upf"id="sign__up_pconf" type="password" name="pwdconf" min="8" placeholder="Confirm Password">
+    <input class="create" type="text" name="fname" placeholder="FirstName">
+    <input class="create" type="text" name="lname" placeholder="LastName">
+    <input class="create_email"type="text" name="email"  placeholder="youremail@gmail.com">
+    <input class="create_bday" type="text" name="bday"  placeholder="mm/dd/yyyy">
+    <textarea id="create_bio"name="bio" rows="8" cols="80" placeholder="A little about you..."></textarea>
+
+    <button id="save" type="submit"  name="button">Save</button>
   </form>
 </div>
 
+<div class="create_div">
 
-<form id="create_profile" action="/sign-up" method="post">
-  <input type="text" name="fname" placeholder="FirstName">
-  <input type="text" name="lname" placeholder="LastName">
-  <input type="text" name="email"  placeholder="youremail@gmail.com">
-  <input type="text" name="bday"  placeholder="mm/dd/yyyy">
-  <textarea name="bio" rows="8" cols="80"></textarea>
+</div>
+<!-- <form id="create_profile" action="/sign-up" method="post">
+  <input class="create" type="text" name="fname" placeholder="FirstName">
+  <input class="create" type="text" name="lname" placeholder="LastName"> <br>
+  <input class="create"type="text" name="email"  placeholder="youremail@gmail.com">
+  <input class="create" type="text" name="bday"  placeholder="mm/dd/yyyy">
+  <textarea id="create_bio"name="bio" rows="8" cols="80"></textarea>
 
   <button id="save" type="submit" form="create_profile" name="button">Save</button>
-</form>
+</form> -->

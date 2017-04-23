@@ -11,14 +11,13 @@
     Email: <%= @profile.email %>
   </p>
   <p id="dob">
-    Born: <%= @profile.bday %>
+    Born: <%= @profile.bday.strftime("%Y-%m-%d") %>
   </p>
 </div>
 
 <div id="bio">
   A little about <%= @profile.fname %>:<br>
   <%= @profile.bio %>
-  <%= @profile.user_id %>
 </div>
 
 <div id="edit_form">

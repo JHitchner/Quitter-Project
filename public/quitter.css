@@ -8,16 +8,21 @@ body{
 nav{
   background-color: #006494;
   position: relative;
-  top:-50px;
+  top:-30px;
   height:120px;
   width: 100%;
   left:0px;
   font-family: 'Oswald', sans-serif;
 }
+.flash-message{
+  position: absolute;
+  top:120px;
+  left:10px;
+}
 .general_background{
   background-color: #1B98E0;
   position: absolute;
-  height: 100%;
+  height: 900px;
   top:70px;
   width: 1207px;
   left: 8px;
@@ -27,8 +32,8 @@ nav{
 #words{
   position: absolute;
   z-index: -1;
-  opacity: .6;
-  left: 300px;
+  opacity: .3;
+  left: 200px;
   top: 30px;
 }
 #page_title{
@@ -38,10 +43,10 @@ nav{
   text-align: left;
   left:50px;
   top: 50px;
+  text-decoration: none;
   font-weight: bold;
   font-family:'League Script', cursive;
 }
-
 #bird{
   position: absolute;
   height: 40px;
@@ -68,17 +73,24 @@ nav{
   top:90px;
   color: white;
 }
+#profile_link{
+  position: absolute;
+  left: 940px;
+  top:90px;
+  color: white;
+
+}
 /*Sign-in Form*/
-.sign {
+.sign_in_form {
   position: relative;
   width: 500px;
   height: 150px;
   left:350px;
-  top:-150px;
+  top:0px;
   font-size: 28px;
   border: 0px;
   border-radius: 5px;
-  background-color: #1B98E0
+  background-color: #1B98E0;
 }
 #username{
   position: relative;
@@ -88,10 +100,12 @@ nav{
   margin: 10px;
   padding: 10px;
   font-family: 'Oswald', sans-serif;
+  left: 20px;
 }
 #password{
   position: relative;
   top: 50px;
+  left: 20px;
   border: 0px;
   border-radius: 5px;
   margin: 10px;
@@ -105,11 +119,11 @@ nav{
   left:100px;
 }
 #welcome{
-  font-size: 30px;
+  font-size: 40px;
   font-family:'League Script', cursive;
   position: relative;
-  left:425px;
-  font-weight: bold;
+  left:370px;
+  font-weight: 800;
   color: #1B98E0;
 }
 #instruct{
@@ -123,19 +137,104 @@ nav{
 #sign_in_btn{
   cursor: pointer;
   position: relative;
-  left:350px;
+  top: 50px;
+  left:50px;
   color: white;
   font-family: 'Oswald', sans-serif;
-  border: 3px solid white;
+  border: 2px solid white;
   border-radius: 5px;
   background-color: #006494;
   padding: 5px 10px 5px 10px;
 }
 /*Sign-Up*/
-.sign_f{
-  width: 400px;
-  height: 400px;
-  margin: 33% auto;
+#create_account{
+  font-size: 40px;
+  font-family:'League Script', cursive;
+  position: absolute;
+  left:370px;
+  top: 80px;
+  font-weight: 800;
+  color: #1B98E0;
+}
+
+#create_profile{
+  position: absolute;
+  top: 350px;
+  left: 200px;
+  height: 300px;
+  width: 800px;
+  border: 0px;
+  border-radius: 10px;
+  z-index: 1;
+}
+.sign_upf{
+  position: relative;
+  top:100px;
+  left: 215px;
+  padding: 5px;
+  border: 0px;
+  border-radius: 5px;
+  margin: 10px;
+  z-index: 2;
+}
+.create_div{
+  position: absolute;
+  top: 180px;
+  left: 180px;
+  background-color: #1B98E0;
+  height: 500px;
+  width: 800px;
+  border: 0px;
+  border-radius: 10px;
+  opacity: .8;
+  z-index: 0;
+}
+.create{
+  position: relative;
+  top:200px;
+  left: -400px;
+  padding: 5px;
+  border: 0px;
+  border-radius: 5px;
+  margin: 20px;
+  z-index: 1;
+}
+.create_email{
+  position: absolute;
+  margin: 40px;
+  top:350px;
+  left: 195px;
+  z-index: 1;
+  padding: 5px;
+  border: 0px;
+  border-radius: 5px;
+}
+.create_bday{
+  position: absolute;
+  margin: 40px;
+  top:350px;
+  left: 420px;
+  padding: 5px;
+  border: 0px;
+  border-radius: 5px;
+  z-index: 1;
+}
+#create_bio{
+  position: absolute;
+  padding: 5px;
+  top: 450px;
+  left: 225px;
+  border:0px;
+  border-radius: 5px;
+  z-index: 1;
+}
+#save{
+  position: absolute;
+  left: 825px;
+  top: 600px;
+  z-index: 1;
+  border: 0px;
+  border-radius: 5px;
 }
 
 /*Profile view*/
@@ -143,13 +242,14 @@ nav{
   position: relative;
   top: 0px;
   left: 50px;
+  font-weight: bold;
   font-size: 30px;
-  color: #13293D;
+  color: white;
   font-family: 'Oswald', sans-serif;
 }
 #bio{
   position: relative;
-  background-color: #E8F1F2;
+  background-color: #1B98E0;
   height:200px;
   width: 300px;
   padding:20px;
@@ -173,11 +273,10 @@ nav{
   border: 0px;
   border-radius: 10px;
   padding: 10px;
-  background-color: #E8F1F2;
+  background-color: #1B98E0;
   font-family: 'Oswald', sans-serif;
   color: #13293D;
   top: 30px;
-  opacity: .8;
 }
 #edit_form{
   position: absolute;
@@ -243,4 +342,90 @@ nav{
   font-size: 12px;
   font-family: 'Oswald', sans-serif;
   z-index: 2;
+}
+/*Post Create Page*/
+h2{
+  font-size: 40px;
+  font-family:'League Script', cursive;
+  position: absolute;
+  left:450px;
+  top: 100px;
+  font-weight: 800;
+  color: #1B98E0;
+}
+.post_create{
+  position: relative;
+  left:460px;
+  top:100px;
+}
+#post_title{
+  position: relative;
+  width: 150px;
+  left: 0px;
+  border: 0px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  top: 0px;
+}
+#post_body{
+  position: relative;
+  width: 150px;
+  left: 0px;
+  border: 0px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  top: 0px;
+}
+#post_btn{
+cursor: pointer;
+position: relative;
+top: 0px;
+left:60px;
+color: white;
+font-family: 'Oswald', sans-serif;
+border: 2px solid white;
+border-radius: 5px;
+background-color: #006494;
+padding: 5px 10px 5px 10px;
+}
+.post_background{
+  position: absolute;
+  z-index: -1;
+  top: 200px;
+  left: 410px;
+  width: 300px;
+  height: 400px;
+  background-color: #006494;
+  opacity: .9;
+  border-radius: 10px;
+}
+/*Home Page*/
+#member_posts{
+  font-size: 30px;
+  font-family:'League Script', cursive;
+  position: absolute;
+  left:320px;
+  top: 100px;
+  font-weight: 800;
+  color: white;
+}
+#posts{
+  position: absolute;
+  top: 200px;
+  left: 360px;
+  font-family: 'Oswald', sans-serif;
+}
+.home{
+  position: absolute;
+  width: 600px;
+  height: 800px;
+  border-radius: 10px;
+  background-color: #006494;
+  /*opacity: .8;*/
+  z-index: -2;
+  top: 180px;
+  left: 300px;
+
 }

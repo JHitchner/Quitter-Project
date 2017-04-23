@@ -1,7 +1,8 @@
 <div class="home">
 </div>
+<p id="member_posts">See What Your Fellow 'Quitters' Are Saying</p>
 <% @post.each do |post| %>
- <li>
+ <li id="posts">
    <a href="/profile_view/?id=<%= @profile_id %>">
    <%= post.post_title %></a> |
    <%= post.post_body %>
