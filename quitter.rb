@@ -98,7 +98,8 @@ put "/profile_edit/:id" do
   @profile = Profile.find(params[:id])
   @profile.update(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio])
   @profile.save
-  redirect "/profile_view/#{@profile.id}"
+  # redirect "/profile_view/#{@profile.id}"
+  # redirect "/profile_view"
 end
 
 # //posts
