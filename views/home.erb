@@ -1,7 +1,9 @@
-<h3>Create your account:</h3>
-
-<form method="POST" action="/signup">
-  <p>Username: <input type="text" name="username" placeholder="Username:"></p>
-  <p>Password: <input type="password" name="password" placeholder="Password:"></p>
-  <input class="btn btn-primary" type="submit" value="Submit">
-</form>
+<section id="home_posts_scroll">
+  <% post_ten.each do |post| %>
+    <article class="home_post_art">
+      <p class="home_post_usr"><%= post.user_id %>: </p>
+      <p class="home_post_t"><%= post.post_title %></p>
+      <p class="home_post"><%= post.post_body %></p>
+    </article>
+  <% end %>
+</section>

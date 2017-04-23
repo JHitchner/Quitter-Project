@@ -1,20 +1,17 @@
-
-<div id="profile_name"> <%= @profile.fname %>
-<%= @profile.lname %></div>
-
+<div id="profile_name">
+  <%= @profile.fname %>
+  <%= @profile.lname %>
+</div>
 <div id="profile_email">
-Email: <%= @profile.email %></div>
+  Email: <%= @profile.email %>
+</div>
+
 Birthday: <%= @profile.bday %>
 Bio: <%= @profile.bio %>
 <%= @profile.user_id %>
 
-
-
-
-
 <a id="edit_link"href="">Edit Profile</a>
 <!-- Hide form unless link click js -->
-
 
 <form id="edit_form" method="post" action="/profile_edit/<%= @profile.id %>">
     <input type="hidden" name="_method" value="put">

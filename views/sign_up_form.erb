@@ -1,16 +1,13 @@
- <div class="sign">
+ <!-- <div class="sign"> -->
   <form id="sign_up_f" class="sign_f" action="/sign-up" method="post">
-    <label class="sign" for="username">Username:</label>
-    <input id="sign_up_u" type="text" name="username">
-    <label class="sign" for="password">Password:</label>
-    <input id="sign__up_p" type="password" name="password" min="8">
-    <label class="sign" for="pwdconf">Confirm Password:</label>
-    <input id="sign__up_pconf" type="password" name="pwdconf" min="8">
-    <input type="text" name="fname" placeholder="FirstName">
-    <input type="text" name="lname" placeholder="LastName">
-    <input type="text" name="email"  placeholder="youremail@gmail.com">
-    <input type="text" name="bday"  placeholder="mm/dd/yyyy">
-    <textarea name="bio" rows="8" cols="80"></textarea>
-   <input id="sign_up_btn" type="submit">
+    <input id="sign_up_u"  class="sign" type="text" name="username" placeholder="Username">
+    <input id="sign__up_p" class="sign" type="password" name="password" min="8" placeholder="Password">
+    <!-- <input id="sign__up_pconf" class="sign" type="password" name="pwdconf" min="8" placeholder="Confirm Password"> -->
+    <input class="sign" type="text" name="fname" placeholder="First name">
+    <input class="sign" type="text" name="lname" placeholder="Last name">
+    <input class="sign" type="text" name="email"  placeholder="youremail@gmail.com">
+    <input class="sign" type="text" name="bday"  placeholder=" Birthday- mm/dd/yyyy">
+    <textarea class="sign" name="bio" placeholder="Tell me about yourself"rows="8" cols="80"></textarea>
+   <input id="sign_up_btn" class="sign" type="submit" value="Sign Up">
   </form>
-</div>
+<!-- </div> -->
