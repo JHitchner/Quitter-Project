@@ -1,36 +1,246 @@
-.sign {
-    width: 500px;
-    height: 500px;
-    margin: 0 auto;
-    font-size: 28px;
+/*Layout Styling*/
+body{
+  backgroud-color: #E8F1F2;
+  height: 100%;
+  overflow-x: hidden;
+  ;
+}
+nav{
+  background-color: #006494;
+  position: relative;
+  top:-50px;
+  height:120px;
+  width: 100%;
+  left:0px;
+  font-family: 'Oswald', sans-serif;
+}
+.general_background{
+  background-color: #1B98E0;
+  position: absolute;
+  height: 100%;
+  top:70px;
+  width: 1207px;
+  left: 8px;
+  opacity: .6;
+  z-index: -1;
+}
+#words{
+  position: absolute;
+  z-index: -1;
+  opacity: .6;
+  left: 300px;
+  top: 30px;
+}
+#page_title{
+  color: #E8f1f2;
+  font-size: 60px;
+  position: relative;
+  text-align: left;
+  left:50px;
+  top: 50px;
+  font-weight: bold;
+  font-family:'League Script', cursive;
 }
 
-.sign_f{
-    width: 400px;
-    height: 400px;
-    margin: 33% auto;
+#bird{
+  position: absolute;
+  height: 40px;
+  width: 45px;
+  top: 25px;
+  left: 300px;
 }
+#poo{
+  position: absolute;
+  height: 20px;
+  width: 15px;
+  top: 85px;
+  left: 268px;
+}
+#sign_up{
+  position: absolute;
+  left: 1100px;
+  top:90px;
+  color: white;
+}
+#sign_in{
+  position: absolute;
+  left: 1020px;
+  top:90px;
+  color: white;
+}
+/*Sign-in Form*/
+.sign {
+  position: relative;
+  width: 500px;
+  height: 150px;
+  left:350px;
+  top:-150px;
+  font-size: 28px;
+  border: 0px;
+  border-radius: 5px;
+  background-color: #1B98E0
+}
+#username{
+  position: relative;
+  top: 50px;
+  border: 0px;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  font-family: 'Oswald', sans-serif;
+}
+#password{
+  position: relative;
+  top: 50px;
+  border: 0px;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  font-family: 'Oswald', sans-serif;
+}
+#quit{
+  position: relative;
+  height:150px;
+  width:300px;
+  left:100px;
+}
+#welcome{
+  font-size: 30px;
+  font-family:'League Script', cursive;
+  position: relative;
+  left:425px;
+  font-weight: bold;
+  color: #1B98E0;
+}
+#instruct{
+  font-size: 15px;
+  font-family: 'Oswald', sans-serif;
+  position: relative;
+  left:455px;
+  top:-30px;
+  color: #13293D;
+}
+#sign_in_btn{
+  cursor: pointer;
+  position: relative;
+  left:350px;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  border: 3px solid white;
+  border-radius: 5px;
+  background-color: #006494;
+  padding: 5px 10px 5px 10px;
+}
+/*Sign-Up*/
+.sign_f{
+  width: 400px;
+  height: 400px;
+  margin: 33% auto;
+}
+
+/*Profile view*/
 #profile_name{
   position: relative;
-  top:100px;
+  top: 0px;
+  left: 50px;
   font-size: 30px;
-  color:blue;
+  color: #13293D;
+  font-family: 'Oswald', sans-serif;
 }
-
+#bio{
+  position: relative;
+  background-color: #E8F1F2;
+  height:200px;
+  width: 300px;
+  padding:20px;
+  border: 0px;
+  border-radius: 10px;
+  top: 50px;
+  left: 30px;
+  font-size: 15px;
+  font-family: 'Oswald', sans-serif;
+  opacity: .8;
+}
 #edit_form{
   position: relative;
   left:200px;
   top:300px;
 }
-#profile_email{
+#profile_info{
   position: relative;
-  color: blue;
-  top:100px;
+  left:30px;
+  width: 320px;
+  border: 0px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #E8F1F2;
+  font-family: 'Oswald', sans-serif;
+  color: #13293D;
+  top: 30px;
+  opacity: .8;
 }
-.home{
-  color: black;
+#edit_form{
+  position: absolute;
+  top: 300px;
+  left: 200px;
+  background-color: #006494;
+  height: 300px;
+  width: 800px;
+  border: 5px solid #E8F1F2;
+  border-style: groove;
+  border-radius: 10px;
+  display: none;
+  z-index: 3;
+}
+#edit{
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  margin: 10px;
+}
+.name{
   position: relative;
-  height:300px;
-  width: 300px;
-  font-size: 30px;
+  width: 150px;
+  left:20px;
+  border: 0px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  top: -30px;
+}
+#body{
+  position: relative;
+  top: -10px;
+  left: 20px;
+  border: 0px;
+  border-radius: 5px;
+  width: 550px;
+  padding: 10px;
+}
+#submit_edit{
+  position: relative;
+  border: 0px;
+  border-radius: 5px;
+  color: #E8F1F2;
+  background-color: #1B98E0;
+  font-family: 'Oswald', sans-serif;
+  padding: 5px;
+  left: 70px;
+  top: -30px;
+}
+#edit_link{
+  position: relative;
+  top: 60px;
+  left: 55px;
+  font-size: 12px;
+  font-family: 'Oswald', sans-serif;
+  z-index: 2;
+}
+#create_post{
+  position: relative;
+  top: 60px;
+  left: 65px;
+  font-size: 12px;
+  font-family: 'Oswald', sans-serif;
+  z-index: 2;
 }
