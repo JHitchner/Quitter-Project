@@ -15,16 +15,21 @@
       <input type="search" name="">
       <input type="submit" name="">
    </form> -->
-    <nav>
-    <!-- <% if session[:user_id] %> -->
-    <a id="sign_out" href="#">Sign Out onClick="function(){<%session[:user_id]=nil%>
-    <%redirect "/"%>}</a>
-    <!-- <% else %> -->
-    <a id="profile_link" href="/profile_view/?id=">Profile</a>
-    <a id="sign_up" href="/sign-up">Register</a>
-    <a id="sign_in" href="/sign-in">Sign In</a>
-    <!-- <% end %> -->
-    <a id="page_title" href="/"> Quitter.. </a>
+
+      <nav>
+      <!-- <% if session[:user_id] %> -->
+      <a id="sign_out" href="#">Sign Out onClick="function(){<%session[:user_id]=nil%>
+      <%redirect "/"%>}</a>
+      <!-- <% else %> -->
+      <a id="profile_link" href="/profile_view/?id=">Profile</a>
+      <a id="sign_up" href="/sign-up">Register</a>
+      <a id="sign_in" href="/sign-in">Sign In</a>
+      <!-- <% end %> -->
+      <a id="page_title" href="/"> Quitter.. </a>
+
+   <div id = "content">
+
+   </div>
     <div id="logo_images">
      <!-- <img id="dot" src="images/dot.png" alt=""> -->
      <img id="poo"src="/images/poo.png" alt="">
@@ -38,5 +43,6 @@
     </nav>
     <%= yield %>
     <!-- <script type"text/javascript" src="quitter.js"></script> -->
+  
   </body>
 </html>
