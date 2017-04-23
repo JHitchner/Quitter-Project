@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 /*Layout Styling*/
 body{
   backgroud-color: #E8F1F2;
   height: 100%;
   overflow-x: hidden;
-  ;
-=======
+}
+
 html, body{
   height: 100%;
 }
@@ -65,7 +64,7 @@ nav{
   outline: 0;
   border: 1px solid #e6ecf0;
   border-radius: 3px;
->>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
+
 }
 nav{
   background-color: #006494;
@@ -141,7 +140,7 @@ nav{
   top:90px;
   color: white;
 
-<<<<<<< HEAD
+
 }
 /*Sign-in Form*/
 .sign_in_form {
@@ -231,7 +230,8 @@ nav{
   z-index: 1;
 }
 .sign_upf{
-=======
+}
+
 .sign_f{
     position: relative;
     top: 200px;
@@ -249,7 +249,6 @@ nav{
 }
 
 #profile_name{
->>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
   position: relative;
   top:100px;
   left: 215px;
@@ -259,6 +258,7 @@ nav{
   margin: 10px;
   z-index: 2;
 }
+
 .create_div{
   position: absolute;
   top: 180px;
@@ -271,6 +271,7 @@ nav{
   opacity: .8;
   z-index: 0;
 }
+
 .create{
   position: relative;
   top:200px;
@@ -281,6 +282,7 @@ nav{
   margin: 20px;
   z-index: 1;
 }
+
 .create_email{
   position: absolute;
   margin: 40px;
@@ -291,6 +293,7 @@ nav{
   border: 0px;
   border-radius: 5px;
 }
+
 .create_bday{
   position: absolute;
   margin: 40px;
@@ -301,6 +304,7 @@ nav{
   border-radius: 5px;
   z-index: 1;
 }
+
 #create_bio{
   position: absolute;
   padding: 5px;
@@ -310,6 +314,7 @@ nav{
   border-radius: 5px;
   z-index: 1;
 }
+
 #save{
   position: absolute;
   left: 825px;
@@ -348,7 +353,7 @@ nav{
   left:200px;
   top:300px;
 }
-<<<<<<< HEAD
+
 #profile_info{
   position: relative;
   left:30px;
@@ -381,7 +386,8 @@ nav{
   margin: 10px;
 }
 .name{
-=======
+}
+
 
 #profile_email {
   position: relative;
@@ -444,7 +450,7 @@ h2{
   left:460px;
   top:100px;
 }
-<<<<<<< HEAD
+
 #post_title{
   position: relative;
   width: 150px;
@@ -514,7 +520,7 @@ padding: 5px 10px 5px 10px;
   z-index: -2;
   top: 180px;
   left: 300px;
-=======
+
 
 #home_posts_scroll{
     position: relative;

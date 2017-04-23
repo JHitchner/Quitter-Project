@@ -5,7 +5,7 @@ require "bundler/setup"
 require "./models"
 
 set :database, "sqlite3:quitterbase.sqlite3"
-<<<<<<< HEAD
+
 enable :sessions
 
 def current_user
@@ -17,7 +17,7 @@ end
 get "/" do
   session[:user_id]=nil
   @post = Post.all
-=======
+
 set :sessions, true
 set :session_secret, "!~Seekr3t"
 
@@ -36,7 +36,7 @@ get "/" do
   if session[:user_id]
     puts "Show current user- #{@current_user}"
   end
->>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
+
   erb :home
 end
 
