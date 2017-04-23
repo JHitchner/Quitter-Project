@@ -11,9 +11,12 @@
     <nav>
       <% if @current_user.nil? %>
         <a id="lay_up" class="layBtn" href="/sign-up">Sign Up</a>
-        <a id="lay_up" class="layBtn" href="/sign-in">Sign In</a>
+        <a id="lay_in" class="layBtn" href="/sign-in">Sign In</a>
       <% else %>
-        <a id="lay_up" class="layBtn" href="/sign-out">Sign Out</a>
+        <%  @profile=Profile.where(user_id: @current_user).first %>
+        <a id="lay_acct" class="layBtn" href="/delete_account">Account</a>
+        <a id="lay_prof" class="layBtn" href="/profile_view">Profile</a>
+        <a id="lay_out" class="layBtn" href="/sign-out">Sign Out</a>
       <% end %>
     </nav>
   </header>

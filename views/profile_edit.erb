@@ -1,7 +1,9 @@
-
-<form method="post" action="/profile_edit/<%= @profile.id %>">
-    <input type="hidden" name="_method" value="put">
-    <input type="text" name="fname" value="<%= @profile.fname %>">
-    <input type="text" name="lname" value="<%= @profile.lname %>">
-    <button type="submit">Update Profile</button>
+<form id="prof_edt_f" method="post" action="/profile_edit/<%= @profile.id %>">
+    <input class="prof_edt" type="hidden" name="_method" value="put">
+    <input class="prof_edt" type="text" name="fname" value="<%= @profile.fname %>" placeholder="First name">
+    <input class="prof_edt" type="text" name="lname" value="<%= @profile.lname %>" placeholder="Last name" >
+    <input class="prof_edt" type="email" name="email" value="<%=@profile.email%>" placeholder="youremali@gmail.com" >
+    <input class="prof_edt" type="text" name="bday" value="<%=@profile.bday%>" placeholder="Birthday- mm/dd/yyyy">
+    <textarea name="bio" rows="8" cols="80" value="@profile.bio" placeholder="Tell me about yourself"></textarea>
+    <button id="submit_edit" class="prof_edt" type="submit">Update Profile</button>
 </form>

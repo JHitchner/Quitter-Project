@@ -21,6 +21,7 @@ end
 
 get "/" do
   if session[:user_id]
+    @current_user=session[:user_id]
     puts "Show current user- #{@current_user}"
   end
   erb :home
@@ -37,7 +38,6 @@ post "/sign-up" do
   )
   @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user.id)
   session[:user_id]=@user.id
-  # redirect "profile_view/?id=#{@profile.id}"
   redirect "profile_view/#{@profile.id}"
 end
 
@@ -51,7 +51,7 @@ post "/sign-in" do
     session[:user_id]=@user.id
     @profile=Profile.where(user_id: @user.id).first
     flash[:notice] = "Login successful!"
-    redirect "/profile_view/#{@profile.id}"
+    redirect "/"
   else
     flash[:notice] = "Login failed."
     redirect "/sign-in"
@@ -80,11 +80,49 @@ post "/delete_acount" do
   end
 end
 
+get "/profile_view" do
+  if session[:user_id]
+    @current_user=session[:user_id]
+    @profile = Profile.where(user_id: @current_user).first
+    if @profile.nil?
+      @user=User.find(@current_user)
+      @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @current_user)
+    end
+    redirect "profile_view/#{@profile.id}"
+  else
+    flash[:notice] = "Login Timed-out"
+    redirect "/"
+  end
+end
+
 get "/profile_view/:id" do
   @profile = Profile.find(params[:id])
-  @current_user=session[:user_id]
-  puts "Show current user- #{@current_user}"
+  if @current_user
+    puts "Show current user- #{@current_user}"
+  elsif session[:user_id]
+    @current_user=session[:user_id]
+    puts "Show current user- #{@current_user}"
+  else
+    flash[:notice] = "Login Timed-out"
+    redirect "/"
+  end
   erb :profile_view
+end
+
+get "/profile_edit" do
+  if session[:user_id]
+    @current_user=session[:user_id]
+    @profile = Profile.where(user_id: @current_user).first
+    redirect "/profile_edit/#{@profile.id}"
+    puts "Show current user- #{@current_user}"
+  else
+    flash[:notice] = "Login Timed-out"
+    redirect "/"
+  end
+end
+
+get "/profile_edit/:id" do
+  erb :profile_edit
 end
 
 put "/profile_edit/:id" do

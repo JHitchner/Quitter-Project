@@ -1,3 +1,4 @@
+<input class="home" type="hidden" name="current_user" value="<%= @current_user %>">
 <section id="home_posts_scroll">
   <% post_ten.each do |post| %>
   <%  usr=User.find(post.user_id) %>

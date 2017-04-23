@@ -1,3 +1,4 @@
+/*  Layout.erb Styling*/
 html, body{
   height: 100%;
 }
@@ -46,7 +47,8 @@ nav{
   text-decoration: none;
 }
 
-.sign {
+/*  Form Pages Styling*/
+.sign, .prof_ro{
   display: block;
   width: 300px;
   margin-right: 120px;
@@ -57,9 +59,10 @@ nav{
   outline: 0;
   border: 1px solid #e6ecf0;
   border-radius: 3px;
+  text-decoration: none;
 }
 
-.sign_f{
+.sign_f, .prof_f{
     position: relative;
     top: 200px;
     margin-left: 33%;
@@ -70,29 +73,13 @@ nav{
     background-color: #EFE9F4;
 }
 
-#sign_up_btn, #sign_in_btn{
+#sign_up_btn, #sign_in_btn, #prof_edt_btn{
   background-color: #00A6F5;
-
+  font-family: Arial;
+  color: buttontext;
 }
 
-#profile_name{
-  position: relative;
-  top:100px;
-  font-size: 30px;
-  color:blue;
-}
-
-#edit_form{
-  position: relative;
-  left:200px;
-  top:300px;
-}
-
-#profile_email{
-  position: relative;
-  color: blue;
-  top:100px;
-}
+/*  Home Page Styling*/
 
 #home_posts_scroll{
     position: relative;
@@ -130,5 +117,4 @@ nav{
 
 .home_post{
   padding: 10px;
-
 }
