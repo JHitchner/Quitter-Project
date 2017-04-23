@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/quitter.css">
+<<<<<<< HEAD
   <link href="https://fonts.googleapis.com/css?family=League+Script|Oswald:300|Permanent+Marker" rel="stylesheet">
     <title> Welcome to Quitter</title>
   </head>
@@ -35,6 +36,23 @@
      <img id="poo"src="/images/poo.png" alt="">
      <img id="bird"src="/images/twitter.png" alt="">
     </div>
+=======
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <title></title>
+  </head>
+  <body>
+  <header>
+    <nav>
+      <% if @current_user.nil? %>
+        <a id="lay_up" class="layBtn" href="/sign-up">Sign Up</a>
+        <a id="lay_up" class="layBtn" href="/sign-in">Sign In</a>
+      <% else %>
+        <a id="lay_up" class="layBtn" href="/sign-out">Sign Out</a>
+      <% end %>
+    </nav>
+  </header>
+  <aside></aside>
+>>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
     <div class="flash-message">
       <% if flash[:notice] %>
         <%= flash[:notice] %>
@@ -43,6 +61,9 @@
     </nav>
     <%= yield %>
     <!-- <script type"text/javascript" src="quitter.js"></script> -->
+<<<<<<< HEAD
   
+=======
+>>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
   </body>
 </html>

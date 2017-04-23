@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="home">
 </div>
 <p id="member_posts">See What Your Fellow 'Quitters' Are Saying</p>
@@ -8,3 +9,15 @@
    <%= post.post_body %>
  </li>
 <% end %>
+=======
+<section id="home_posts_scroll">
+  <% post_ten.each do |post| %>
+  <%  usr=User.find(post.user_id) %>
+    <article class="home_post_art">
+      <p class="home_post_u"><%= usr.username.capitalize%>:  </p>
+      <p class="home_post_t"><%= post.post_title %></p>
+      <p class="home_post"><%= post.post_body %></p>
+    </article>
+  <% end %>
+</section>
+>>>>>>> 4c945d999e815021d47ee6540866895ea52a495d

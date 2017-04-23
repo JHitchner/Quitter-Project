@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170422172445) do
+=======
+ActiveRecord::Schema.define(version: 20170422211110) do
+>>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
 
   create_table "posts", force: :cascade do |t|
     t.string  "post_title"
     t.string  "post_body"
+<<<<<<< HEAD
     t.integer "profile_id"
+=======
+>>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
     t.integer "user_id"
   end
 
