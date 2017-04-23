@@ -7,6 +7,17 @@ body{
   overflow-y: scroll;
 }
 
+aside{
+  height: 100%;
+  width: 25%;
+  position: fixed;
+  margin-left: 115px;
+  margin-top: 250px;
+  background-image: url("/Twitter-hash-tag-abuse-spam.gif");
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
 header{
   position: fixed;
   top: 0;
@@ -102,10 +113,19 @@ nav{
   color: #4C6663;
 }
 
+.home_post_u{
+  border: 1px solid #4C6663;
+  margin: 0;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
 .home_post_t{
   border: 1px solid #4C6663;
+  margin: 0px 0px 18px 0px;
   padding: 10px;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 .home_post{

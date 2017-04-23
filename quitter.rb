@@ -19,12 +19,6 @@ def post_ten
   @post=@posts.reverse
 end
 
-def avatar
-  post_ten.each do |ten|
-    @profile=Profile.where(user_id: ten.user_id)
-  end
-end
-
 get "/" do
   if session[:user_id]
     puts "Show current user- #{@current_user}"
