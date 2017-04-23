@@ -5,17 +5,38 @@ require "bundler/setup"
 require "./models"
 
 set :database, "sqlite3:quitterbase.sqlite3"
-enable :sessions
+# <<<<<<< HEAD
+# enable :sessions
+#
+# def current_user
+#   if session[:user_id]
+#     User.find(session[:user_id])
+#   end
+# end
+#
+# get "/" do
+#   session[:user_id]=nil
+#   @post = Post.all
+# =======
+set :sessions, true
+set :session_secret, "!~Seekr3t"
 
-def current_user
-  if session[:user_id]
-    User.find(session[:user_id])
-  end
+# def current_user
+#   if session[:user_id]
+#     User.find(session [:user_id])
+#   end
+# end
+
+def post_ten
+  @posts=Post.last(10)
+  @post=@posts.reverse
 end
 
 get "/" do
-  session[:user_id]=nil
-  @post = Post.all
+  if session[:user_id]
+    puts "Show current user- #{@current_user}"
+  end
+# >>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
   erb :home
 end
 
@@ -30,7 +51,9 @@ post "/sign-up" do
   )
 
   @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user.id)
-  redirect "profile_view/?id=#{@profile.id}"
+  session[:user_id]=@user.id
+  # redirect "profile_view/?id=#{@profile.id}"
+  redirect "profile_view/#{@profile.id}"
 end
 
 get "/sign-in" do
@@ -39,14 +62,25 @@ end
 
 post "/sign-in" do
   @user = User.where(username: params[:username]).first
- if @user.password == params[:password]
-  #  session[:user_id]=@user.id
-   @profile=Profile.where(user_id: @user.id).first
-   flash[:notice] = "Login successful!"
-   redirect "/profile_view/?id=#{@profile.id}"
- else
-   flash[:notice] = "Login failed."
-   redirect "/sign-in"
+# <<<<<<< HEAD
+#  if @user.password == params[:password]
+#   #  session[:user_id]=@user.id
+#    @profile=Profile.where(user_id: @user.id).first
+#    flash[:notice] = "Login successful!"
+#    redirect "/profile_view/?id=#{@profile.id}"
+#  else
+#    flash[:notice] = "Login failed."
+#    redirect "/sign-in"
+# =======
+  if @user.password == params[:password]
+    session[:user_id]=@user.id
+    @profile=Profile.where(user_id: @user.id).first
+    flash[:notice] = "Login successful!"
+    redirect "/profile_view/#{@profile.id}"
+  else
+    flash[:notice] = "Login failed."
+    redirect "/sign-in"
+# >>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
   end
 end
 
@@ -60,14 +94,15 @@ end
 # end
 
 get "/delete_account" do
+  puts "Show current user- #{@current_user}"
   erb :account_delete
-  session[:user_id]=nil
 end
 
 post "/delete_acount" do
   @user = User.where(username: params[:username]).first
   if @user.password == params[:password]
     @user.delete()
+    session[:user_id]=nil
     flash[:notice] = "Account Deleted!"
     redirect "/"
   else
@@ -75,32 +110,40 @@ post "/delete_acount" do
   end
 end
 
-get "/profile_view/" do
-  @user = User.where(params[:post_id])
+# <<<<<<< HEAD
+# get "/profile_view/" do
+#   @user = User.where(params[:post_id])
+#   @profile = Profile.find(params[:id])
+#   @post = Post.where(params[:id])
+#
+#   if @user.nil?
+#     @post = Post.find(params[:id])
+#   end
+# =======
+get "/profile_view/:id" do
   @profile = Profile.find(params[:id])
-  @post = Post.where(params[:id])
-
-  if @user.nil?
-    @post = Post.find(params[:id])
-  end
+  @current_user=session[:user_id]
+  puts "Show current user- #{@current_user}"
+# >>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
   erb :profile_view
 end
 
 put "/profile_edit/:id" do
-  session[:user_id]
+  puts "Show current user- #{@current_user}"
   @profile = Profile.find(params[:id])
   @profile.update(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio])
   @profile.save
+# <<<<<<< HEAD
   redirect "/profile_view/?id=#{@profile.id}"
 end
-get "/post/" do
-  erb :post
-end
-post "/post/:id" do
-    @profile_id = params['id']
-    @post = Post.create(post_body: params[:post_body], post_title: params[:post_title], profile_id: @profile_id )
-  redirect "/?id=#{@profile_id}"
-end
+# get "/post/" do
+#   erb :post
+# end
+# post "/post/:id" do
+#     @profile_id = params['id']
+#     @post = Post.create(post_body: params[:post_body], post_title: params[:post_title], profile_id: @profile_id )
+#   redirect "/?id=#{@profile_id}"
+# end
 
 # get "/show_post" do
 # 	@post = Post.find(params[:id])
@@ -166,3 +209,26 @@ end
 #   @post.update(content: params[:post_body], post_title: params[:post_title])
 #   redirect “/posts/#{@post.id}”
 # end
+# =======
+  # redirect "/profile_view/#{@profile.id}"
+  # redirect "/profile_view"
+# end
+
+# //posts
+
+get "/post_create" do
+  # @users = User.all
+  # @posts= Post.all
+  erb  :profile_view
+end
+
+post '/post_create' do
+  if @current_user
+    @post = Post.create(content: params[:post_body], post_title: params[:post_title], user_id: session[:user_id])
+    # redirect '/show-post'
+  # else
+  #   flash[:alert] = "you need to sign in to post"
+  end
+  # redirect"/show-post"
+end
+# >>>>>>> 4c945d999e815021d47ee6540866895ea52a495d

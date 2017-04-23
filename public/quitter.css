@@ -1,173 +1,81 @@
-/*Layout Styling*/
-body{
-  backgroud-color: #E8F1F2;
+
+html, body{
   height: 100%;
-  overflow-x: hidden;
-  ;
 }
-nav{
-  background-color: #006494;
-  position: relative;
-  top:-30px;
-  height:120px;
+
+body{
+  margin: 0;
+  overflow-y: scroll;
+}
+
+aside{
+  height: 100%;
+  width: 25%;
+  position: fixed;
+  margin-left: 115px;
+  margin-top: 250px;
+  background-image: url("/Twitter-hash-tag-abuse-spam.gif");
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+header{
+  position: fixed;
+  top: 0;
+  z-index: 999;
   width: 100%;
-  left:0px;
-  font-family: 'Oswald', sans-serif;
+  height: 200px;
+  margin: 0;
+  background-image: url("http://core0.staticworld.net/images/article/2014/10/exit_computing_business_thinkstock-100525915-primary.idge.jpg");
+  background-repeat: no-repeat;
+  background-size: 1674px 364px;
 }
-.flash-message{
-  position: absolute;
-  top:120px;
-  left:10px;
+
+nav{
+
 }
-.general_background{
-  background-color: #1B98E0;
-  position: absolute;
-  height: 900px;
-  top:70px;
-  width: 1207px;
-  left: 8px;
-  opacity: .6;
-  z-index: -1;
-}
-#words{
-  position: absolute;
-  z-index: -1;
-  opacity: .3;
-  left: 200px;
-  top: 30px;
-}
-#page_title{
-  color: #E8f1f2;
-  font-size: 60px;
-  position: relative;
-  text-align: left;
-  left:50px;
-  top: 50px;
+
+.layBtn{
+  float: right;
+  padding: 10px;
+  border: 1px solid #e6ecf0;
+  border-radius: 3px;
+  margin: 20px 40px 0px 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: 300;
   text-decoration: none;
-  font-weight: bold;
-  font-family:'League Script', cursive;
-}
-#bird{
-  position: absolute;
-  height: 40px;
-  width: 45px;
-  top: 25px;
-  left: 300px;
-}
-#poo{
-  position: absolute;
-  height: 20px;
-  width: 15px;
-  top: 85px;
-  left: 268px;
-}
-#sign_up{
-  position: absolute;
-  left: 1100px;
-  top:90px;
-  color: white;
-}
-#sign_in{
-  position: absolute;
-  left: 1020px;
-  top:90px;
-  color: white;
-}
-#profile_link{
-  position: absolute;
-  left: 940px;
-  top:90px;
-  color: white;
-
-}
-/*Sign-in Form*/
-.sign_in_form {
-  position: relative;
-  width: 500px;
-  height: 150px;
-  left:350px;
-  top:0px;
-  font-size: 28px;
-  border: 0px;
-  border-radius: 5px;
-  background-color: #1B98E0;
-}
-#username{
-  position: relative;
-  top: 50px;
-  border: 0px;
-  border-radius: 5px;
-  margin: 10px;
-  padding: 10px;
-  font-family: 'Oswald', sans-serif;
-  left: 20px;
-}
-#password{
-  position: relative;
-  top: 50px;
-  left: 20px;
-  border: 0px;
-  border-radius: 5px;
-  margin: 10px;
-  padding: 10px;
-  font-family: 'Oswald', sans-serif;
-}
-#quit{
-  position: relative;
-  height:150px;
-  width:300px;
-  left:100px;
-}
-#welcome{
-  font-size: 40px;
-  font-family:'League Script', cursive;
-  position: relative;
-  left:370px;
-  font-weight: 800;
-  color: #1B98E0;
-}
-#instruct{
-  font-size: 15px;
-  font-family: 'Oswald', sans-serif;
-  position: relative;
-  left:455px;
-  top:-30px;
-  color: #13293D;
-}
-#sign_in_btn{
-  cursor: pointer;
-  position: relative;
-  top: 50px;
-  left:50px;
-  color: white;
-  font-family: 'Oswald', sans-serif;
-  border: 2px solid white;
-  border-radius: 5px;
-  background-color: #006494;
-  padding: 5px 10px 5px 10px;
-}
-/*Sign-Up*/
-#create_account{
-  font-size: 40px;
-  font-family:'League Script', cursive;
-  position: absolute;
-  left:370px;
-  top: 80px;
-  font-weight: 800;
-  color: #1B98E0;
 }
 
-#create_profile{
-  position: absolute;
-  top: 350px;
-  left: 200px;
-  height: 300px;
-  width: 800px;
-  border: 0px;
-  border-radius: 10px;
-  z-index: 1;
+.sign {
+  display: block;
+  width: 300px;
+  margin-right: 120px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size:  18px;
+  padding: 20px 0px 5px 0px;
+  outline: 0;
+  border: 1px solid #e6ecf0;
+  border-radius: 3px;
 }
-.sign_upf{
+
+.sign_f{
+    position: relative;
+    top: 200px;
+    margin-left: 33%;
+    margin-right: 38%;
+    padding: 20px 95px 20px 95px;
+    display: block;
+    align-items: center;
+    background-color: #EFE9F4;
+}
+
+#sign_up_btn, #sign_in_btn{
+  background-color: #00A6F5;
+}
+
+#profile_name{
   position: relative;
   top:100px;
   left: 215px;
@@ -266,38 +174,8 @@ nav{
   left:200px;
   top:300px;
 }
-#profile_info{
-  position: relative;
-  left:30px;
-  width: 320px;
-  border: 0px;
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #1B98E0;
-  font-family: 'Oswald', sans-serif;
-  color: #13293D;
-  top: 30px;
-}
-#edit_form{
-  position: absolute;
-  top: 300px;
-  left: 200px;
-  background-color: #006494;
-  height: 300px;
-  width: 800px;
-  border: 5px solid #E8F1F2;
-  border-style: groove;
-  border-radius: 10px;
-  display: none;
-  z-index: 3;
-}
-#edit{
-  position: absolute;
-  top: 50px;
-  left: 10px;
-  margin: 10px;
-}
-.name{
+
+#profile_email{
   position: relative;
   width: 150px;
   left:20px;
@@ -358,74 +236,40 @@ h2{
   left:460px;
   top:100px;
 }
-#post_title{
+#home_posts_scroll{
   position: relative;
-  width: 150px;
-  left: 0px;
-  border: 0px;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
-  top: 0px;
-}
-#post_body{
-  position: relative;
-  width: 150px;
-  left: 0px;
-  border: 0px;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
-  top: 0px;
-}
-#post_btn{
-cursor: pointer;
-position: relative;
-top: 0px;
-left:60px;
-color: white;
-font-family: 'Oswald', sans-serif;
-border: 2px solid white;
-border-radius: 5px;
-background-color: #006494;
-padding: 5px 10px 5px 10px;
-}
-.post_background{
-  position: absolute;
-  z-index: -1;
   top: 200px;
-  left: 410px;
-  width: 300px;
-  height: 400px;
-  background-color: #006494;
-  opacity: .9;
-  border-radius: 10px;
+  height: 100%;
+  margin-left: 33%;
+  margin-right: 33%;
+  padding: 20px 25px 20px 25px;
+  align-items: center;
+  background-color: #e6ecf0;
 }
-/*Home Page*/
-#member_posts{
-  font-size: 30px;
-  font-family:'League Script', cursive;
-  position: absolute;
-  left:320px;
-  top: 100px;
-  font-weight: 800;
-  color: white;
-}
-#posts{
-  position: absolute;
-  top: 200px;
-  left: 360px;
-  font-family: 'Oswald', sans-serif;
-}
-.home{
-  position: absolute;
-  width: 600px;
-  height: 800px;
-  border-radius: 10px;
-  background-color: #006494;
-  /*opacity: .8;*/
-  z-index: -2;
-  top: 180px;
-  left: 300px;
 
+.home_post_art{
+  margin: 20px;
+  background-color: white;
+  font-family: 'Abel', sans-serif;
+  font-size: 18px;
+  color: #4C6663;
+}
+
+.home_post_u{
+  border: 1px solid #4C6663;
+  margin: 0;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.home_post_t{
+  border: 1px solid #4C6663;
+  margin: 0px 0px 18px 0px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.home_post{
+  padding: 10px;
 }
