@@ -124,7 +124,7 @@ get "/profile_view/:id" do
   @profile = Profile.find(params[:id])
   @current_user=session[:user_id]
   puts "Show current user- #{@current_user}"
-# >>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
+# # >>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
   erb :profile_view
 end
 
@@ -136,19 +136,20 @@ put "/profile_edit/:id" do
 # <<<<<<< HEAD
   redirect "/profile_view/?id=#{@profile.id}"
 end
-# get "/post/" do
-#   erb :post
-# end
-# post "/post/:id" do
-#     @profile_id = params['id']
-#     @post = Post.create(post_body: params[:post_body], post_title: params[:post_title], profile_id: @profile_id )
-#   redirect "/?id=#{@profile_id}"
-# end
+get "/post/" do
+  erb :post
+end
+post "/post/:id" do
+  puts  "Show current user- #{@current_user}"
+    @profile_id = params['id']
+    @post = Post.create(post_body: params[:post_body], post_title: params[:post_title], user_id:@current_user)
+  redirect "/:id=#{@current_user}"
+end
 
-# get "/show_post" do
-# 	@post = Post.find(params[:id])
-# 	erb :profile_view
-# end
+get "/show_post" do
+	@post = Post.find(params[:id])
+	erb :profile_view
+end
 
 #//posts
 
@@ -216,19 +217,19 @@ end
 
 # //posts
 
-get "/post_create" do
-  # @users = User.all
-  # @posts= Post.all
-  erb  :profile_view
-end
+# get "/post_create" do
+#   # @users = User.all
+#   # @posts= Post.all
+#   erb  :profile_view
+# end
 
-post '/post_create' do
-  if @current_user
-    @post = Post.create(content: params[:post_body], post_title: params[:post_title], user_id: session[:user_id])
+# post '/post_create' do
+#   if @current_user
+#     @post = Post.create(content: params[:post_body], post_title: params[:post_title], user_id: session[:user_id])
     # redirect '/show-post'
   # else
   #   flash[:alert] = "you need to sign in to post"
-  end
+  # end
   # redirect"/show-post"
-end
+# end
 # >>>>>>> 4c945d999e815021d47ee6540866895ea52a495d
