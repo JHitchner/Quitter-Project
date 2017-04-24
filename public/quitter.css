@@ -101,11 +101,25 @@ nav{
 }
 
 .home_post_u{
+  display: block;
   border: 1px solid #4C6663;
   margin: 0;
   padding: 10px;
   font-size: 20px;
   font-weight: bolder;
+  text-decoration: none;
+  color: #4C6663;
+}
+
+.home_post_tp{
+  display: none;
+  background-color: #EFE9F4;
+  border: 1px solid #4C6663;
+}
+
+.home_post_u:hover .home_post_tp {
+    display: block;
+    z-index: 999;
 }
 
 .home_post_t{
