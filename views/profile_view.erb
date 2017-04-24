@@ -13,7 +13,15 @@
     Email: <%= @profile.email %>
   </p>
   <p id="dob">
+<<<<<<< HEAD
     Born: <%= @profile.bday.strftime("%m-%d-%Y") %>
+=======
+    <% if @profile.bday %>
+      Born: <%= @profile.bday.strftime("%Y-%m-%d") %>
+    <% else %>
+      Born:
+    <% end %>
+>>>>>>> 137d3f1afb7e254b391657702e133c5b44fd3db1
   </p>
 </div>
 
