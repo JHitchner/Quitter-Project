@@ -1,6 +1,6 @@
 <input class="home" type="hidden" name="current_user" value="<%= @current_user %>">
 <section id="home_posts_scroll">
-  <% post_ten.each do |post| %>
+  <% # post_ten.each do |post| %>
   <%  usr=User.find(post.user_id) %>
     <article class="home_post_art">
       <a class="home_post_u" href="/profile_view/<%= post.user_id %>" ><%= usr.username.capitalize%>:</a>

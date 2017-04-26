@@ -12,5 +12,3 @@ gem "sqlite3"
 gem "rake"
 
 gem "sinatra-flash"
-
-gem "pry"
