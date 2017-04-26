@@ -31,10 +31,6 @@ header{
   background-size: 1674px 364px;
 }
 
-nav{
-
-}
-
 .layBtn{
   float: right;
   padding: 10px;
@@ -47,8 +43,50 @@ nav{
   text-decoration: none;
 }
 
+.lay_drop_cnt{
+  position: relative;
+  float: right;
+  display: inline-block;
+}
+
+.lay_drop_dwn{
+  display: none;
+  position: absolute;
+  top: 55px;
+  background-color: #e6ecf0;
+  border-radius: 3px;
+  box-shadow: 0px 10px 18px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.lay_drop_lnks{
+  display: block;
+  width: 100px;
+  padding: 10px 5px 10px 10px;
+  font-family: Arial;
+  color: #0D0221;
+  font-size: 18px;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.lay_drop_lnks:hover {
+  background-color: #4C6663;
+  color: white;
+}
+
+.lay_drop_cnt:hover .lay_drop_dwn{
+  display: block;
+}
+
+.lay_drop_cnt:hover #lay_acct{
+  background-color: #4C6663;
+}
+
 /*  Form Pages Styling*/
-.sign, .prof_ro{
+.sign, .prof_ro, .post{
   display: block;
   width: 300px;
   margin-right: 120px;
@@ -62,7 +100,7 @@ nav{
   text-decoration: none;
 }
 
-.sign_f, .prof_f{
+.sign_f, .prof_f, .post_f{
     position: relative;
     top: 200px;
     margin-left: 33%;
@@ -73,7 +111,14 @@ nav{
     background-color: #EFE9F4;
 }
 
-#sign_up_btn, #sign_in_btn, #prof_edt_btn{
+label{
+  font-family: 'Abel', sans-serif;
+  font-size: 24px;
+  color: #4C6663;
+  font-weight: bolder;
+}
+
+#sign_up_btn, #sign_in_btn, #prof_edt_btn, #post_create_btn{
   background-color: #00A6F5;
   font-family: Arial;
   color: buttontext;
@@ -90,6 +135,10 @@ nav{
     padding: 20px 25px 20px 25px;
     align-items: center;
     background-color: #e6ecf0;
+}
+
+.home_display_post{
+  animation: flipInY 5s;
 }
 
 .home_post_art{
@@ -113,13 +162,14 @@ nav{
 
 .home_post_tp{
   display: none;
+  position: absolute;
   background-color: #EFE9F4;
   border: 1px solid #4C6663;
+  z-index: 1;
 }
 
-.home_post_u:hover .home_post_tp {
-    display: block;
-    z-index: 999;
+.home_post_u:hover span.home_post_tp{
+  display: block;
 }
 
 .home_post_t{

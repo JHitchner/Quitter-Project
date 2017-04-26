@@ -1,9 +1,12 @@
+<input class="home" type="hidden" name="prof_owner" value="<%= @profile_owner %>">
+<input class="home" type="hidden" name="current_user" value="<%= @current_user %>">
+
 <form id="prof_ro_f" class="prof_f" method="post" action="/profile_view/<%= @profile.id %>">
-    <input class="prof_ro" type="hidden" name="_method" value="put">
+    <input type="hidden" name="_method" value="put">
     <input class="prof_ro" type="text" name="fname" value="<%= @profile.fname %>" placeholder="First name" readonly>
     <input class="prof_ro" type="text" name="lname" value="<%= @profile.lname %>" placeholder="Last name" readonly>
     <input class="prof_ro" type="email" name="email" value="<%=@profile.email%>" placeholder="youremal@gmail.com" readonly>
     <input class="prof_ro" type="text" name="bday" value="<%=@profile.bday%>" placeholder="Birthday- mm/dd/yyyy" readonly>
     <textarea class="prof_ro" name="bio" rows="8" cols="80" value="@profile.bio" placeholder="Tell me about yourself" readonly></textarea>
-    <a id="prof_edt_btn" class="prof_ro" href="/profile_edit">Edit Profile</a>
+    <a id="prof_edt_btn" class="prof_ro" href="/profile_edit/<%= @profile.id %>">Edit Profile</a>
 </form>

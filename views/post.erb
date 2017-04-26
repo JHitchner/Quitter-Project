@@ -1,15 +1,7 @@
-<h2>Create Post</h2>
-<form action="/posts" method="post"role="form">
- <div class="form-group">
-   <label for="post_title">Title:</label>
-   <br>
-   <input id="post_title" class="form-control" name="post_title" type="text"  style="width=90%"/>
- </div>
- <div class="form-group">
-   <label for="post_body">Body:</label>
-   <br>
-   <textarea id="post_body" name="postcontent" class="form-control" rows="10"></textarea>
-   <br><br>
- </div>
- <button type="submit" class="btn btn-success">Submit</button>
+<form class="post_f" action="/post_create" method="post">
+ <label for="post_title">Title:</label>
+ <input class="post" name="post_title" type="text">
+ <label for="post_body">What's on your mind:</label>
+ <textarea class="post" name="post_body" rows="10"></textarea>
+ <button id="post_create_btn" class="post" type="submit" >Submit</button>
 </form>

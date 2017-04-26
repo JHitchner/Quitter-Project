@@ -3,16 +3,22 @@ require "sinatra/activerecord"
 require "sinatra/flash"
 require "bundler/setup"
 require "./models"
+require "pry"
 
 set :database, "sqlite3:quitterbase.sqlite3"
 set :sessions, true
 set :session_secret, "!~Seekr3t"
 
-# def current_user
-#   if session[:user_id]
-#     User.find(session [:user_id])
-#   end
-# end
+def current_user
+  if session[:user_id]
+    User.find(session[:user_id])
+  end
+end
+
+def my_post
+  @posts=Post.where(user_id: current_user.to_s).first
+  @post=@posts.reverse
+end
 
 def post_ten
   @posts=Post.last(10)
@@ -36,7 +42,7 @@ post "/sign-up" do
     username: params[:username],
     password: params[:password]
   )
-  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user.id)
+  @profile =Profile.create(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user.id)
   session[:user_id]=@user.id
   redirect "profile_view/#{@profile.id}"
 end
@@ -80,48 +86,45 @@ post "/delete_acount" do
   end
 end
 
-get "/profile_view" do
-  if session[:user_id]
-    @current_user=session[:user_id]
-    @profile = Profile.where(user_id: @current_user).first
-    if @profile.nil?
-      @user=User.find(@current_user)
-      @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @current_user)
-    end
-    redirect "profile_view/#{@profile.id}"
-  else
-    flash[:notice] = "Login Timed-out"
-    redirect "/"
-  end
-end
+# get "/profile_view" do
+#   if session[:user_id]
+#     @current_user=session[:user_id]
+#     @profile = Profile.where(user_id: @current_user).first
+#     if @profile.nil?
+#       @user=User.find(@current_user)
+#       @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @current_user)
+#     end
+#     redirect "profile_view/#{@profile.id}"
+#   else
+#     flash[:notice] = "Login Timed-out"
+#     redirect "/"
+#   end
+# end
 
 get "/profile_view/:id" do
   @profile = Profile.find(params[:id])
-  if @current_user
+  if session[:user_id]
+    if @current_user.nil?
+      @current_user=session[:user_id]
+    end
     puts "Show current user- #{@current_user}"
-  elsif session[:user_id]
-    @current_user=session[:user_id]
-    puts "Show current user- #{@current_user}"
-  else
-    flash[:notice] = "Login Timed-out"
-    redirect "/"
   end
+  @profile_owner=@profile.user_id
+  puts "Show profile owner- #{@profile_owner}"
   erb :profile_view
 end
 
-get "/profile_edit" do
+get "/profile_edit/:id" do
   if session[:user_id]
     @current_user=session[:user_id]
     @profile = Profile.where(user_id: @current_user).first
-    redirect "/profile_edit/#{@profile.id}"
+    @profile_owner=@profile.user_id
+    # redirect "/profile_edit/#{@profile.id}"
     puts "Show current user- #{@current_user}"
   else
     flash[:notice] = "Login Timed-out"
     redirect "/"
   end
-end
-
-get "/profile_edit/:id" do
   erb :profile_edit
 end
 
@@ -130,24 +133,42 @@ put "/profile_edit/:id" do
   @profile = Profile.find(params[:id])
   @profile.update(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio])
   @profile.save
-  # redirect "/profile_view/#{@profile.id}"
+  redirect "/profile_view/#{@profile.id}"
   # redirect "/profile_view"
+end
+
+post "/profile_edit/:id" do
+  redirect "/profile_view/#{@profile.id}"
 end
 
 # //posts
 
-get "/post_create" do
+get "/post_create/:id" do
   # @users = User.all
   # @posts= Post.all
-  erb  :profile_view
+  erb  :post
 end
 
 post '/post_create' do
-  if @current_user
-    @post = Post.create(content: params[:post_body], post_title: params[:post_title], user_id: session[:user_id])
-    # redirect '/show-post'
-  # else
-  #   flash[:alert] = "you need to sign in to post"
+  if session[:user_id]
+    if @current_user.nil?
+      @current_user=session[:user_id]
+    end
+    @post = Post.create(post_body: params[:post_body], post_title: params[:post_title], user_id: session[:user_id])
+    puts "Show current user- #{@current_user}"
+    redirect"/show-post"
+  else
+    flash[:alert] = "Login Timed-out"
+    redirect"/"
   end
-  # redirect"/show-post"
+end
+
+get "/show-post" do
+  # if session[:user_id]
+  #   @post = Post.find(params[:id])
+  # else
+  #   flash[:alert] = "Login Timed-out"
+  #   redirect"/"
+  # end
+  erb :posts
 end
