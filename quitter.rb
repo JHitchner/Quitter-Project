@@ -15,8 +15,14 @@ def current_user
 end
 
 def my_post
-  @posts=Post.where(user_id: current_user.to_s).first
-  @post=@posts.reverse
+  if session[:user_id]
+    @current_user=session[:user_id]
+    @posts=Post.where(user_id: @current_user)
+    @post=@posts.reverse
+  else
+    flash[:notice] = "Login Timed-out"
+    redirect "/"
+  end
 end
 
 def post_ten
@@ -160,6 +166,10 @@ post '/post_create' do
     flash[:alert] = "Login Timed-out"
     redirect"/"
   end
+end
+
+get "/posts" do
+  erb :posts
 end
 
 get "/show-post" do

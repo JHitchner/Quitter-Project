@@ -1,4 +1,4 @@
-<input class="home" type="hidden" name="current_user" value="<%= #{current_user} %>">
+<input class="home" type="hidden" name="current_user" value="<%= @current_user %>">
 <form id="prof_edt_f" method="post" action="/profile_edit/<%= @profile.id %>">
     <input type="hidden" name="_method" value="put">
     <input class="prof_edt" type="text" name="fname" value="<%= @profile.fname %>" placeholder="First name">
