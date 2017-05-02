@@ -175,7 +175,14 @@ nav{
   border: 0px;
   border-radius: 5px;
 }
-
+/*Homepage*/
+#all_users{
+ position: relative;
+ height: 200px;
+ width: 300px;
+ left: 400px;
+ top: 300px;
+}
 /*Profile view*/
 
 #profile_name{

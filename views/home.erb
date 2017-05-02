@@ -1,9 +1,13 @@
 <div class="home">
 </div>
-<p id="member_posts">
   See What Your Fellow 'Quitters' Are Saying
-
-  <% @posts.each do |post| %>
-    <%= post.post_title %>
+<div id="all_users">
+  <% @user.each do |user| %>
+    <li>
+      <%= user.username%>
+    </li>
+    <% @id = user.profile.id %>
+    <a href="/profile_view/<%=@id %>"><%=user.profile.fname%></a>
   <% end %>
-</p>
+
+</div>

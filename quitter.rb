@@ -20,7 +20,7 @@ def post_ten
 end
 
 get "/" do
-  @posts = Post.all
+  @user = User.all
   erb :home
 end
 
