@@ -14,11 +14,7 @@
     Email: <%= @profile.email %>
   </p>
   <p id="dob">
-    <% if @profile.bday %>
-      Born: <%= @profile.bday.strftime("%m-%d-%Y") %>
-    <% else %>
-      Born:
-    <% end %>
+    Born: <%= @profile.bday %>
   </p>
 </div>
 
@@ -34,7 +30,7 @@
       <input class="name"type="text" name="lname" value="<%= @profile.lname %>" placeholder="Last Name"><br>
       <input class="name" type="email" name="email"
       value="<%= @profile.email %>" placeholder="Your Email">
-      <input class="name" type="text" name="bday" value="<%= @profile.bday.strftime("%m-%d-%Y")  %>" placeholder="mm/dd/yyyy">
+      <input class="name" type="text" name="bday" value="<%= @profile.bday %>" placeholder="mm/dd/yyyy">
       <textarea id="body" name="bio" rows="8" cols="80" placeholder="Body"></textarea>
       <button id="submit_edit"type="submit">Update Profile</button>
   </form>

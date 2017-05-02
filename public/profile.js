@@ -1,12 +1,16 @@
-var profileModal =document.getElementById("edit_form");
-var editLink = document.getElementById("edit_link");
-var updateBtn = document.getElementById("submit_edit");
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  var profileModal =document.getElementById("edit_form");
+  var editLink = document.getElementById("edit_link");
+  var updateBtn = document.getElementById("submit_edit");
 
 
-editLink.addEventListener("click", function(){
-  profileModal.style.display= "block";
-});
+  editLink.addEventListener("click", function(){
+    profileModal.style.display= "block";
+  });
 
-updateBtn.addEventListener("click", function(){
-  profileModal.style.display = "none";
-});
+  updateBtn.addEventListener("click", function(){
+    profileModal.style.display = "none";
+  });
+})

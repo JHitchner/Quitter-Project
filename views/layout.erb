@@ -9,7 +9,15 @@
   </head>
   <body>
   <header>
+    <div class="general_background">
+      <img id="words"src="/images/words.png" alt="">
+    </div>
     <nav>
+      <a id="page_title" href="/"> Quitter.. </a>
+      <div id="logo_images">
+       <img id="poo"src="/images/poo.png" alt="">
+       <img id="bird"src="/images/twitter.png" alt="">
+      </div>
       <% if @current_user.nil? %>
         <a id="lay_up" class="layBtn" href="/sign-up">Sign Up</a>
         <a id="lay_up" class="layBtn" href="/sign-in">Sign In</a>
