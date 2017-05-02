@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/quitter.css">
-    <link rel="stylesheet" href="./animate.css">
+    <!-- <link rel="stylesheet" href="./animate.css"> -->
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <title></title>
   </head>
@@ -14,14 +14,14 @@
         <a id="lay_up" class="layBtn" href="/sign-up">Sign Up</a>
         <a id="lay_in" class="layBtn" href="/sign-in">Sign In</a>
       <% else %>
-        <%  @profile=Profile.where(user_id: @current_user).first %>
+        <% @profile=Profile.where(user_id: @current_user).first %>
         <a id="lay_out" class="layBtn" href="/sign-out">Sign Out</a>
 
         <div class="lay_drop_cnt">
           <a id="lay_acct" class="layBtn" href="#">Account</a>
           <div class="lay_drop_dwn">
             <a class="lay_drop_lnks" href="/post_create/<%= @current_user %>">Post</a>
-            <a class="lay_drop_lnks" href="/profile_view/<%= @profile.id %>">Profile</a>
+            <a class="lay_drop_lnks" href="/profile_view/<%= @profile.user_id %>">Profile</a>
             <a class="lay_drop_lnks" href="/sign-out">Sign Out</a>
           </div>
         <div>
@@ -36,6 +36,6 @@
       <% end %>
     </div>
     <%= yield %>
-    <script type"text/javascript" src="quitter.js"></script>
+    <!-- <script type"text/javascript" src="quitter.js"></script> -->
   </body>
 </html>

@@ -91,39 +91,21 @@ post "/delete_acount" do
   end
 end
 
-# get "/profile_view" do
-#   if session[:user_id]
-#     @current_user=session[:user_id]
-#     @profile = Profile.where(user_id: @current_user).first
-#     if @profile.nil?
-#       @user=User.find(@current_user)
-#       @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @current_user)
-#     end
-#     redirect "profile_view/#{@profile.id}"
-#   else
-#     flash[:notice] = "Login Timed-out"
-#     redirect "/"
-#   end
-# end
-
-get "/profile_view/:id" do
-  @profile = Profile.find(params[:id])
+get "/profile_view/:user_id" do
+  @profile = Profile.where(user_id: params[:user_id]).first
   if session[:user_id]
     if @current_user.nil?
       @current_user=session[:user_id]
     end
     puts "Show current user- #{@current_user}"
   end
-  @profile_owner=@profile.user_id
-  puts "Show profile owner- #{@profile_owner}"
   erb :profile_view
 end
 
 get "/profile_edit/:id" do
   if session[:user_id]
     @current_user=session[:user_id]
-    @profile = Profile.where(user_id: @current_user).first
-    @profile_owner=@profile.user_id
+    @profile = Profile.find(params[:id])
     # redirect "/profile_edit/#{@profile.id}"
     puts "Show current user- #{@current_user}"
   else
@@ -138,12 +120,11 @@ put "/profile_edit/:id" do
   @profile = Profile.find(params[:id])
   @profile.update(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio])
   @profile.save
-  redirect "/profile_view/#{@profile.id}"
-  # redirect "/profile_view"
+  redirect "/profile_view/#{@profile.user_id}"
 end
 
 post "/profile_edit/:id" do
-  redirect "/profile_view/#{@profile.id}"
+  redirect "/profile_view/#{@profile.user_id}"
 end
 
 # //posts

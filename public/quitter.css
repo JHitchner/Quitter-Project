@@ -86,7 +86,7 @@ header{
 }
 
 /*  Form Pages Styling*/
-.sign, .prof_ro, .post{
+.sign, .prof_ro, .prof_edt, .post{
   display: block;
   width: 300px;
   margin-right: 120px;
