@@ -373,24 +373,7 @@ h2{
   left:750px;
   top:530px;
 }
-=======
-/*.sign_f, .prof_f, .post_f{
-  position: relative;
-  top: 200px;
-  margin-left: 33%;
-  margin-right: 38%;
-  padding: 20px 95px 20px 95px;
-  display: block;
-  align-items: center;
-  background-color: #EFE9F4;
-}
 
-label{
-  font-family: 'Abel', sans-serif;
-  font-size: 24px;
-  color: #4C6663;
-  font-weight: bolder;
-/*}*/
 
 #sign_up_btn, #sign_in_btn, #prof_edt_btn, #post_create_btn{
   background-color: #00A6F5;
