@@ -130,18 +130,34 @@ end
 
 # //posts
 
-get "/post_create" do
-  # @users = User.all
-  # @posts= Post.all
-  erb  :profile_view
+get "/post_create/:id" do
+  erb  :post
 end
 
 post '/post_create' do
-  if @current_user
-    @post = Post.create(content: params[:post_body], post_title: params[:post_title], user_id: session[:user_id])
-    # redirect '/show-post'
-  # else
-  #   flash[:alert] = "you need to sign in to post"
+  if session[:user_id]
+    if @current_user.nil?
+      @current_user=session[:user_id]
+    end
+    @post = Post.create(post_body: params[:post_body], post_title: params[:post_title], user_id: session[:user_id])
+    puts "Show current user- #{@current_user}"
+    redirect"/show-post"
+  else
+    flash[:alert] = "Login Timed-out"
+    redirect"/"
   end
-  # redirect"/show-post"
+end
+
+get "/posts" do
+  erb :posts
+end
+
+get "/show-post" do
+  # if session[:user_id]
+  #   @post = Post.find(params[:id])
+  # else
+  #   flash[:alert] = "Login Timed-out"
+  #   redirect"/"
+  # end
+  erb :posts
 end

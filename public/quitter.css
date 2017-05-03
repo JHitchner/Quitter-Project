@@ -61,7 +61,7 @@ nav{
   border-radius: 3px;
 }
 
-.sign_f{
+.sign_f, .prof_f, .post_f{
     position: relative;
     top: 200px;
     margin-left: 33%;

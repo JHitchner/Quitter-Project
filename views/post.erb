@@ -1,19 +1,8 @@
 
-  <h2>Create Post</h2>
-  <div class="post_background">
-
-  </div>
-<div class="post_create">
-
-  <form action="/post/:id"method="post"role="form">
-   <div class="form-group">
-     <input id="post_title" class="form-control" name="post_title" type="text"  style="width=90%" placeholder="Title"/>
-   </div>
-   <div class="form-group">
-     <br>
-     <textarea id="post_body" name="post_body" class="form-control" rows="10" placeholder="Body"></textarea>
-     <br><br>
-   </div>
-   <button id="post_btn" type="submit" class="btn btn-success">Submit</button>
-  </form>
-</div>
+<form class="post_f" action="/post_create" method="post">
+ <label for="post_title">Title:</label>
+ <input class="post" name="post_title" type="text">
+ <label for="post_body">What's on your mind:</label>
+ <textarea class="post" name="post_body" rows="10"></textarea>
+ <button id="post_create_btn" class="post" type="submit" >Submit</button>
+</form>
