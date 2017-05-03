@@ -127,6 +127,7 @@ post "/profile_edit/:id" do
   redirect "/profile_view/#{@profile.user_id}"
 end
 
+
 # //posts
 
 get "/post_create" do
