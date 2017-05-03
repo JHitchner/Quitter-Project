@@ -60,7 +60,7 @@ end
 
 post "/sign-in" do
   @user = User.where(username: params[:username]).first
-  if @user.password == params[:password]
+  if @user && @user.password == params[:password]
     session[:user_id]=@user.id
     @profile=Profile.where(user_id: @user.id).first
     flash[:notice] = "Login successful!"

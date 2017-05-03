@@ -16,8 +16,12 @@
     Email:<%= @profile.email %>
   </p>
   <p id="dob">
-    Birthday: <%=@profile.bday.strftime( "%d-%m-%Y") %>
-  </p>
+    <% if @profile.bday %>
+      Born: <%= @profile.bday.strftime("%Y-%m-%d") %>
+    <% else %>
+      Born:
+    <% end %>
+  S</p>
 </div>
 
 <div id="bio_container">
