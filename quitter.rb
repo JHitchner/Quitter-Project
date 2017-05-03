@@ -8,11 +8,22 @@ set :database, "sqlite3:quitterbase.sqlite3"
 set :sessions, true
 set :session_secret, "!~Seekr3t"
 
-# def current_user
-#   if session[:user_id]
-#     User.find(session [:user_id])
-#   end
-# end
+def current_user
+  if session[:user_id]
+    User.find(session[:user_id])
+  end
+end
+
+def my_post
+  if session[:user_id]
+    @current_user=session[:user_id]
+    @posts=Post.where(user_id: @current_user)
+    @post=@posts.reverse
+  else
+    flash[:notice] = "Login Timed-out"
+    redirect "/"
+  end
+end
 
 def post_ten
   @posts=Post.last(10)
@@ -21,6 +32,7 @@ end
 
 get "/" do
   if session[:user_id]
+    @current_user=session[:user_id]
     puts "Show current user- #{@current_user}"
   end
   erb :home
@@ -35,9 +47,8 @@ post "/sign-up" do
     username: params[:username],
     password: params[:password]
   )
-  @profile =Profile.create(fname: params[:fname],lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user.id)
+  @profile =Profile.create(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user.id)
   session[:user_id]=@user.id
-  # redirect "profile_view/?id=#{@profile.id}"
   redirect "profile_view/#{@profile.id}"
 end
 
@@ -51,7 +62,7 @@ post "/sign-in" do
     session[:user_id]=@user.id
     @profile=Profile.where(user_id: @user.id).first
     flash[:notice] = "Login successful!"
-    redirect "/profile_view/#{@profile.id}"
+    redirect "/"
   else
     flash[:notice] = "Login failed."
     redirect "/sign-in"
@@ -80,11 +91,28 @@ post "/delete_acount" do
   end
 end
 
-get "/profile_view/:id" do
-  @profile = Profile.find(params[:id])
-  @current_user=session[:user_id]
-  puts "Show current user- #{@current_user}"
+get "/profile_view/:user_id" do
+  @profile = Profile.where(user_id: params[:user_id]).first
+  if session[:user_id]
+    if @current_user.nil?
+      @current_user=session[:user_id]
+    end
+    puts "Show current user- #{@current_user}"
+  end
   erb :profile_view
+end
+
+get "/profile_edit/:id" do
+  if session[:user_id]
+    @current_user=session[:user_id]
+    @profile = Profile.find(params[:id])
+    # redirect "/profile_edit/#{@profile.id}"
+    puts "Show current user- #{@current_user}"
+  else
+    flash[:notice] = "Login Timed-out"
+    redirect "/"
+  end
+  erb :profile_edit
 end
 
 put "/profile_edit/:id" do
@@ -92,8 +120,11 @@ put "/profile_edit/:id" do
   @profile = Profile.find(params[:id])
   @profile.update(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio])
   @profile.save
-  # redirect "/profile_view/#{@profile.id}"
-  # redirect "/profile_view"
+  redirect "/profile_view/#{@profile.user_id}"
+end
+
+post "/profile_edit/:id" do
+  redirect "/profile_view/#{@profile.user_id}"
 end
 
 # //posts
