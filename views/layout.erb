@@ -3,33 +3,22 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/quitter.css">
-  <link href="https://fonts.googleapis.com/css?family=League+Script|Oswald:300|Permanent+Marker" rel="stylesheet">
-    <title> Welcome to Quitter</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+    <title>Welcome to Quitter</title>
   </head>
   <body>
-    <div class="general_background">
-      <img id="words"src="/images/words.png" alt="">
-    </div>
-
-    <!-- <form  action="/search" method="get">
-      <input type="search" name="">
-      <input type="submit" name="">
-   </form> -->
+  <header>
     <nav>
-    <!-- <% if session[:user_id] %> -->
-    <a id="sign_out" href="#">Sign Out onClick="function(){<%session[:user_id]=nil%>
-    <%redirect "/"%>}</a>
-    <!-- <% else %> -->
-    <a id="profile_link" href="/profile_view/?id=">Profile</a>
-    <a id="sign_up" href="/sign-up">Register</a>
-    <a id="sign_in" href="/sign-in">Sign In</a>
-    <!-- <% end %> -->
-    <a id="page_title" href="/"> Quitter.. </a>
-    <div id="logo_images">
-     <!-- <img id="dot" src="images/dot.png" alt=""> -->
-     <img id="poo"src="/images/poo.png" alt="">
-     <img id="bird"src="/images/twitter.png" alt="">
-    </div>
+      <% if @current_user.nil? %>
+        <a id="lay_up" class="layBtn" href="/sign-up">Sign Up</a>
+        <a id="lay_up" class="layBtn" href="/sign-in">Sign In</a>
+      <% else %>
+        <a id="lay_up" class="layBtn" href="/sign-out">Sign Out</a>
+      <% end %>
+    </nav>
+  </header>
+  <aside></aside>
     <div class="flash-message">
       <% if flash[:notice] %>
         <%= flash[:notice] %>
