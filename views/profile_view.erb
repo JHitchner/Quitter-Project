@@ -1,6 +1,6 @@
 
 <a id="edit_link" href="#">Edit Profile</a>
-<a id="create_post" href="/post">Create a Post</a>
+<a id="create_post" href="/post_create/<%= @current_user %>">Create a Post</a>
 
 <div id="background_profile">
 </div>
@@ -35,7 +35,12 @@
       <input class="name"type="text" name="lname" value="<%= @profile.lname %>" placeholder="Last Name"><br>
       <input class="name" type="email" name="email"
       value="<%= @profile.email %>" placeholder="Your Email">
-      <input class="name" type="text" name="bday" value="<%= @profile.bday.strftime( '%d-%m-%Y') %>" placeholder="mm/dd/yyyy">
+
+      <% if @profile.bday %>
+      <input class="name" type="text" name="bday" value="<%= @profile.bday.strftime('%m-%d-%Y')  %>" placeholder="mm/dd/yyyy">
+      <% else %>
+      <input class="name" type="text" name="bday" value="" placeholder="mm/dd/yyyy">
+      <% end %>
       <textarea id="body" name="bio" rows="8" cols="80" placeholder="Body"></textarea>
       <button id="submit_edit"type="submit">Update Profile</button>
   </form>

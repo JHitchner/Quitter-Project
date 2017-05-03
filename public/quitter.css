@@ -5,12 +5,10 @@ html, body{
   height: 100%;
   overflow-x: hidden;
 }
-
 body{
   margin: 0;
   overflow-y: scroll;
 }
-
 aside{
   height: 100%;
   width: 530px;
@@ -23,7 +21,6 @@ aside{
   background-repeat: no-repeat;
   background-position: left;
 }
-
 .general_background{
   background-color: #1B98E0;
   position: absolute;
@@ -350,7 +347,7 @@ nav{
   position: relative;
   border: 0px;
   border-radius: 5px;
-  color: ##1B98E0;
+  color: #1B98E0;
   background-color: #E8f1f2;
   font-family: 'Oswald', sans-serif;
   padding: 5px;
@@ -359,26 +356,103 @@ nav{
 }
 
 /*Post Create Page*/
-h2{
-  font-size: 40px;
-  font-family:'League Script', cursive;
-  position: absolute;
-  left:740px;
-  top: 450px;
-  font-weight: 800;
-  color: #1B98E0;
-}
+
 .post_create{
   position: relative;
   left:750px;
   top:530px;
 }
+.post_f{
+position: relative;
+left: 710px;
+top: 500px;
+}
+/*Post View*/
+#posts_scroll{
+position: relative;
+left: 650px;
+top: 500px;
+background-color: #E8f1f2;
+width: 400px;
+padding: 10px;
+}
+.post_art{
+  margin: 20px;
+  background-color: white;
+  font-family: 'Abel', sans-serif;
+  font-size: 18px;
+  color: #4C6663;
+}
+.post{
+  margin: 0px 0px 18px 0px;
+  padding: 10px;
+  font-weight: bold;
+}
+.post_u{
+  display: block;
+  border: 1px solid #4C6663;
+  margin: 0;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bolder;
+  text-decoration: none;
+  color: #4C6663;
+}
 
+.post_tp{
+  display: none;
+  position: absolute;
+  background-color: #EFE9F4;
+  border: 1px solid #4C6663;
+  z-index: 1;
+}
+
+.post_u:hover span.post_tp{
+  display: block;
+}
+
+.post_t{
+  border: 1px solid #4C6663;
+  margin: 0px 0px 18px 0px;
+  padding: 10px;
+  font-weight: bold;
+}
 
 #sign_up_btn, #sign_in_btn, #prof_edt_btn, #post_create_btn{
   background-color: #00A6F5;
   font-family: Arial;
-  color: buttontext;
+  border-radius: 10px;
+}
+#post_all_container{
+position: relative;
+top: -485px;
+left: 30px;
+height: 800px;
+width: 400px;
+background-color: #00A6F5;
+}
+#post_all{
+position: relative;
+left: 50px;
+top: -1200px;
+background-color: #1B98E0;
+width: 300px;
+margin: 5px;
+border-radius:10px;
+}
+#post_all_title{
+position: relative;
+font-size: 20px;
+padding: 5px;
+left: 10px;
+top: 5px;
+}
+#post_all_body{
+position: relative;
+left: 10px;
+top: -10px;
+width: 200px;
+padding: 5px;
 }
 
 /*  Home Page Styling*/
