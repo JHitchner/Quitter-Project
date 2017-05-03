@@ -2,6 +2,10 @@ source "https://rubygems.org"
 
 ruby "2.4.0"
 
+if defined?(RUBY_DESCRIPTION) && RUBY_DESCRIPTION.start_with?("ruby 2.4")
+  gem "openssl"
+end
+
 gem "sinatra"
 
 gem "activerecord"
