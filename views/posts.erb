@@ -1,6 +1,13 @@
 
-<% @post.each do |post| %>
-  <h1 id="post_title"><%= post.post_title %></h1>
-  <p id="post_body"><%= post.post_body %></p>
-<!-- <a href="/posts/<%= post.id %>/edit">Edit Post</a> -->
-<% end %>
+<input type="hidden" name="current_user" value="<%= @current_user %>">
+<section id="posts_scroll">
+  <% my_post.each do |post| %>
+  <%  usr=User.find(post.user_id) %>
+    <article class="post_art">
+      <a class="post_u" href="/profile_view/user_id=<%= post.user_id %>" ><%= usr.username.capitalize%>:</a>
+      <span class="post_tp">Checkout <%= usr.username.capitalize%>'s profile</span>
+      <p class="post_t"><%= post.post_title %></p>
+      <p class="post"><%= post.post_body %></p>
+    </article>
+  <% end %>
+</section>

@@ -1,4 +1,6 @@
 
+/*  Layout.erb Styling*/
+
 html, body{
   height: 100%;
   overflow-x: hidden;
@@ -47,6 +49,7 @@ nav{
   height:120px;
   width: 100%;
   left:0px;
+  z-index: 4;
   font-family: 'Oswald', sans-serif;
 }
 
@@ -75,7 +78,6 @@ nav{
   top: 85px;
   left: 260px;
 }
-
 .layBtn{
   float: right;
   padding: 10px;
@@ -92,7 +94,50 @@ nav{
 
 }
 
-.sign {
+.lay_drop_cnt{
+  position: relative;
+  float: right;
+  display: inline-block;
+}
+
+.lay_drop_dwn{
+  display: none;
+  position: absolute;
+  top: 55px;
+  background-color: #e6ecf0;
+  border-radius: 3px;
+  box-shadow: 0px 10px 18px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.lay_drop_lnks{
+  display: block;
+  width: 100px;
+  padding: 10px 5px 10px 10px;
+  font-family: Arial;
+  color: #0D0221;
+  font-size: 18px;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.lay_drop_lnks:hover {
+  background-color: #4C6663;
+  color: white;
+}
+
+.lay_drop_cnt:hover .lay_drop_dwn{
+  display: block;
+}
+
+.lay_drop_cnt:hover #lay_acct{
+  background-color: #4C6663;
+}
+
+/*  Form Pages Styling*/
+.sign, .prof_ro, .prof_edt, .post{
   display: block;
   width: 300px;
   margin-right: 120px;
@@ -103,8 +148,8 @@ nav{
   outline: 0;
   border: 1px solid #e6ecf0;
   border-radius: 3px;
+  text-decoration: none;
 }
-
 .sign_f{
   position: relative;
   top: 400px;
@@ -175,55 +220,112 @@ nav{
   border: 0px;
   border-radius: 5px;
 }
-/*Homepage*/
-#all_users{
- position: relative;
- height: 200px;
- width: 300px;
- left: 400px;
- top: 300px;
-}
+
 /*Profile view*/
 
+#profileName_container{
+  position: relative;
+  top: 500px;
+  left: 620px;
+  z-index: 2;
+  background-color: #E8F1F2;
+  width: 500px;
+  height: 100px;
+}
+#edit_link{
+  position: relative;
+  top: 600px;
+  left: 630px;
+  font-size: 12px;
+  font-family: 'Oswald', sans-serif;
+  z-index: 3;
+}
+#create_post{
+  position: relative;
+  top: 600px;
+  left: 660px;
+  font-size: 12px;
+  font-family: 'Oswald', sans-serif;
+  z-index: 3;
+}
 #profile_name{
   position: relative;
-  top: 375px;
-  left: 610px;
+  color: #1B98E0;
   font-weight: bold;
   font-size: 30px;
-  color: #1B98E0 ;
+  padding: 10px;
   font-family: 'Oswald', sans-serif;
 }
-#bio{
+
+#profile_info{
   position: relative;
-  background-color: #1B98E0;
-  height:500px;
-  width: 500px;
-  padding:20px;
-  border: 0px;
-  border-radius: 10px;
-  top: 320px;
-  left: 600px;
-  font-size: 15px;
-  font-family: 'Oswald', sans-serif;
-  opacity: .8;
-}
-#edit_form{
-  position: relative;
-  left:100px;
-  top:100px;
-  display: none;
+  top: 380px;
+  left: 300px;
+  background-color: #E8F1F2;
+  width: 260px;
+  height: 200px;
+  border-radius:10px;
 }
 
 #profile_email{
   position: relative;
-  width: 150px;
-  left:20px;
+  width: 50px;
   border: 0px;
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
-  top: -30px;
+  top: 80px;
+  left: 05px;
+  z-index: 2;
+}
+#dob{
+  position: relative;
+  left: 15px;
+  top: 0px;
+  z-index: 1;
+}
+#bio{
+  background-color: #E8f1f2;
+  position: relative;
+  height: 490px;
+  width:490px;
+  padding: 10px;
+  left: -5px;
+  top: 100px;
+}
+#bio_container{
+  position: relative;
+  background-color: #1B98E0;
+  height:800px;
+  width: 500px;
+  padding:20px;
+  border: 0px;
+  border-radius: 10px;
+  top: 175px;
+  left: 600px;
+  font-size: 15px;
+  font-family: 'Oswald', sans-serif;
+  opacity: .8;
+  z-index: 0;
+}
+/*Edit Profile*/
+#edit_form{
+  position: relative;
+  left:450px;
+  top: -650px;
+  z-index: 3;
+  background-color: #1B98E0;
+  width: 800px;
+  height: 400px;
+  border-radius:10px;
+  display: none;
+}
+#editFormheader{
+  font-size: 25px;
+  position: relative;
+  padding: 5px;
+  top: 30px;
+  left: 300px;
 }
 .name{
   position: relative;
@@ -233,11 +335,11 @@ nav{
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
-  top: -30px;
+  top: 50px;
 }
 #body{
   position: relative;
-  top: -10px;
+  top: 80px;
   left: 20px;
   border: 0px;
   border-radius: 5px;
@@ -248,29 +350,14 @@ nav{
   position: relative;
   border: 0px;
   border-radius: 5px;
-  color: #E8F1F2;
-  background-color: #1B98E0;
+  color: ##1B98E0;
+  background-color: #E8f1f2;
   font-family: 'Oswald', sans-serif;
   padding: 5px;
   left: 70px;
-  top: -30px;
+  top: 40px;
 }
-#edit_link{
-  position: relative;
-  top: 430px;
-  left: 610px;
-  font-size: 12px;
-  font-family: 'Oswald', sans-serif;
-  z-index: 2;
-}
-#create_post{
-  position: relative;
-  top: 430px;
-  left: 650px;
-  font-size: 12px;
-  font-family: 'Oswald', sans-serif;
-  z-index: 2;
-}
+
 /*Post Create Page*/
 h2{
   font-size: 40px;
@@ -286,15 +373,46 @@ h2{
   left:750px;
   top:530px;
 }
+=======
+/*.sign_f, .prof_f, .post_f{
+  position: relative;
+  top: 200px;
+  margin-left: 33%;
+  margin-right: 38%;
+  padding: 20px 95px 20px 95px;
+  display: block;
+  align-items: center;
+  background-color: #EFE9F4;
+}
+
+label{
+  font-family: 'Abel', sans-serif;
+  font-size: 24px;
+  color: #4C6663;
+  font-weight: bolder;
+/*}*/
+
+#sign_up_btn, #sign_in_btn, #prof_edt_btn, #post_create_btn{
+  background-color: #00A6F5;
+  font-family: Arial;
+  color: buttontext;
+}
+
+/*  Home Page Styling*/
+
 #home_posts_scroll{
   position: relative;
   top: 200px;
   height: 100%;
-  margin-left: 33%;
-  margin-right: 33%;
+  width: 30%;
+  left: 570px;
   padding: 20px 25px 20px 25px;
   align-items: center;
   background-color: #e6ecf0;
+}
+
+.home_display_post{
+  animation: flipInY 5s;
 }
 
 .home_post_art{
@@ -306,11 +424,26 @@ h2{
 }
 
 .home_post_u{
+  display: block;
   border: 1px solid #4C6663;
   margin: 0;
   padding: 10px;
   font-size: 20px;
   font-weight: bolder;
+  text-decoration: none;
+  color: #4C6663;
+}
+
+.home_post_tp{
+  display: none;
+  position: absolute;
+  background-color: #EFE9F4;
+  border: 1px solid #4C6663;
+  z-index: 1;
+}
+
+.home_post_u:hover span.home_post_tp{
+  display: block;
 }
 
 .home_post_t{
@@ -322,10 +455,12 @@ h2{
 
 .home_post{
   padding: 10px;
+
 }
 #post_title{
   position: relative;
   top: 300px;
   left: 400px;
   z-index: 4;
+
 }
