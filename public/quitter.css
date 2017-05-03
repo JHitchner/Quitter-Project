@@ -10,9 +10,9 @@ body{
 
 aside{
   height: 100%;
-  width: 25%;
-  position: fixed;
-  margin-left: 115px;
+  width: 70%;
+  position: absolute;
+  margin-left: 20px;
   margin-top: 250px;
   background-image: url("/Twitter-hash-tag-abuse-spam.gif");
   background-repeat: no-repeat;
