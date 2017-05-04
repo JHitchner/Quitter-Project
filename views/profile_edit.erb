@@ -1,8 +1,4 @@
-
-<form method="post" action="/profile_edit/<%= @profile.id %>">
-=======
 <form id="prof_edt_f" class="prof_f" method="post" action="/profile_edit/<%= @profile.id %>">
-
     <input type="hidden" name="_method" value="put">
     <input class="prof_edt" type="text" name="fname" value="<%= @profile.fname %>" placeholder="First name">
     <input class="prof_edt" type="text" name="lname" value="<%= @profile.lname %>" placeholder="Last name" >

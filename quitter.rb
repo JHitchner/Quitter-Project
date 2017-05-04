@@ -10,8 +10,7 @@ set :session_secret, "!~Seekr3t"
 
 def current_user
   if session[:user_id]
-
-    User.find(session[:user_id])
+    @current_user=session[:user_id]
   end
 end
 
@@ -143,18 +142,40 @@ post '/post_create' do
       @current_user=session[:user_id]
     end
     @post = Post.create(post_body: params[:post_body], post_title: params[:post_title], user_id: session[:user_id])
-    redirect"/show-post"
+    redirect"/show-mypost"
   else
     flash[:alert] = "Login Timed-out"
     redirect"/"
   end
 end
 
-get "/posts" do
-  erb :posts
+# Use to show all post for a User
+get "/posts/:user_id" do
+  @posts = Post.where(user_id: params[:user_id])
+  @post=@posts.reverse
+  @user=User.find(params[:user_id])
+  erb :posts_user
 end
 
-get "/show-post" do
+# Use for My Post for current_user
+get "/show-mypost/user_id" do
+  # if session[:user_id]
+  #   if @current_user.nil?
+  #     @current_user=session[:user_id]
+  #     @post = Post.where(user_id: @current_user).first
+  #   else
+  #   puts "Show current user- #{@current_user}"
+  # end
+  erb :posts_my
+end
+
+# Use to show ALL user posts
+get "/posts-all" do
   @post = Post.all
-  erb :posts
+  erb :posts_all
+end
+
+# Retrieves all routes list and displays
+Sinatra::Application.routes["GET"].each do |route|
+  puts route[0]
 end

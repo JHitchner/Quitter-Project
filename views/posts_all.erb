@@ -1,0 +1,12 @@
+<input type="hidden" name="current_user" value="<%= @current_user %>">
+<section id="post_all_scroll">
+  <% @post.each do |post| %>
+  <%  usr=User.find(post.user_id) %>
+    <article class="post_art">
+      <a class="post_u" href="/profile_view/<%= post.user_id %>" ><%= usr.username.capitalize%>:</a>
+      <span class="post_tp">Checkout <%= usr.username.capitalize%>'s profile</span>
+      <p class="post_t"><STRONG>Title:</STRONG> <%= post.post_title %></p>
+      <p class="post"><%= post.post_body %></p>
+    </article>
+  <% end %>
+</section>
