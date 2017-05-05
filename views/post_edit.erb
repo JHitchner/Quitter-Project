@@ -1,16 +1,7 @@
-<h2>Edit Post</h2>
-<br/>
-<form action="/posts/<%= @post.id %>" method="post">
- <div class="form-group">
-  <input type="hidden" name="_method" value="put" />
-  <label for="post_title">Title:</label>
-  <br>
-  <input id="post_title" class="form-control" name="post[title]" type="text" value="<%=h @post.post_title %>"/>
- </div>
- <div class="form-group">
-  <label for="post_body">Body:</label>
-  <br>
-  <textarea id="post_body" name="post[body]" class="form-control" rows="5"><%= @post.post_body %></textarea>
- </div>
-  <button type="submit" class="btn btn-success">Submit</button>
+<form id="post_edt_f" class="post_f" method="post" action="/post-edit/<%= @post.id %>">
+  <input type="hidden" name="_method" value="put">
+ <input class="post_edt" name="post_title" value="<%= @post.post_title %>" type="text" placeholder="Title">
+ <input class="post_edt" name="post_body" value="<%= @post.post_body %>" type="textarea" rows="10" placeholder="What's on your mind">
+ <button id="post_edt_btn" class="post_edt" type="submit">Update</button>
+ <a id="post_del_btn" class="post_edt" href="/post-delete/<%= @post.id %>">Delete</a>
 </form>

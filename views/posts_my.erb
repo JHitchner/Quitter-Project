@@ -1,8 +1,9 @@
 <input type="hidden" name="current_user" value="<%= @current_user %>">
 <section id="post_my_scroll">
+    <p class="post_u">My Posts</p>
   <% my_post.each do |post| %>
     <article class="post_art">
-      <p class="post_t"> Title: <%= post.post_title %></p>
+      <p class="post_p"><a class="post_tlink" href="/post-view/<%= post.id %>" > Title: <%= post.post_title %></a></p>
       <p class="post"> Post: <%= post.post_body %></p>
     </article>
   <% end %>

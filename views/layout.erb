@@ -27,7 +27,8 @@
           <div class="lay_drop_cnt">
             <a id="lay_acct" class="layBtn" href="#">Account</a>
             <div class="lay_drop_dwn">
-              <a class="lay_drop_lnks" href="/post_create/<%= @current_user %>">Post</a>
+              <a class="lay_drop_lnks" href="/post_create/<%= @current_user %>">New Post</a>
+              <a class="lay_drop_lnks" href="/show-mypost/<%= @current_user %>">My Post</a>
               <a class="lay_drop_lnks" href="/profile_view/<%= @profile.user_id %>">Profile</a>
               <a class="lay_drop_lnks" href="/sign-out">Sign Out</a>
             </div>

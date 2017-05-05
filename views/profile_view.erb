@@ -3,11 +3,15 @@
     <input class="prof_ro" type="text" name="fname" value="<%= @profile.fname %>" placeholder="First name" readonly>
     <input class="prof_ro" type="text" name="lname" value="<%= @profile.lname %>" placeholder="Last name" readonly>
     <input class="prof_ro" type="email" name="email" value="<%=@profile.email%>" placeholder="youremal@gmail.com" readonly>
-    <input class="prof_ro" type="text" name="bday" value="<%=@profile.bday%>" placeholder="Birthday- mm/dd/yyyy" readonly>
-    <textarea class="prof_ro" name="bio" rows="8" cols="80" value="@profile.bio" placeholder="Tell me about yourself" readonly></textarea>
+    <% if @profile.bday %>
+      <input class="prof_ro" type="text" name="bday" value="<%=@profile.bday.strftime%>" placeholder="Birthday- mm/dd/yyyy" readonly>
+      <% else %>
+      <input class="prof_ro" type="text" name="bday" value="" placeholder="Birthday- mm/dd/yyyy" readonly>
+    <% end %>
+    <input class="prof_ro" type="textarea" name="bio" rows="8" cols="80" value="<%=@profile.bio%>" placeholder="Tell me about yourself" readonly></input>
     <% if @current_user == @profile.user_id %>
     <a id="prof_edt_btn" class="prof_ro" href="/profile_edit/<%= @profile.id %>">Edit Profile</a>
     <% else %>
-    <a id="prof_edt_btn" class="prof_ro" href="/posts/<%= @profile.user_id %>">Catch up with <%= @profile.fname.capitalize%>'s post</a>
+    <a id="prof_view_post_btn" class="prof_ro" href="/posts/<%= @profile.user_id %>">Catch up with <%= @profile.fname.capitalize%>'s post</a>
     <% end %>
 </form>

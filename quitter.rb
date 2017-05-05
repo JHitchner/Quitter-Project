@@ -8,12 +8,14 @@ set :database, "sqlite3:quitterbase.sqlite3"
 set :sessions, true
 set :session_secret, "!~Seekr3t"
 
+# Used to create Current User
 def current_user
   if session[:user_id]
     @current_user=session[:user_id]
   end
 end
 
+# Used to query Current Users posts
 def my_post
   if session[:user_id]
     @current_user=session[:user_id]
@@ -25,11 +27,13 @@ def my_post
   end
 end
 
+# Used to query Top Ten lastest posts
 def post_ten
   @posts=Post.last(10)
   @post=@posts.reverse
 end
 
+# Root Path
 get "/" do
   @user = User.all
   if session[:user_id]
@@ -39,6 +43,7 @@ get "/" do
   erb :home
 end
 
+# Users Table Routes
 get "/sign-up" do
   erb :sign_up_form
 end
@@ -48,9 +53,9 @@ post "/sign-up" do
     username: params[:username],
     password: params[:password]
   )
-  @profile =Profile.create(fname: params[:fname], lname: params[:lname], email:params[:email], bday:params[:bday], bio:params[:bio], user_id: @user.id)
+  @profile =Profile.create(fname: params[:fname], lname: params[:lname], email: params[:email], bday: params[:bday], bio:params[:bio], user_id: @user.id)
   session[:user_id]=@user.id
-  redirect "profile_view/#{@profile.id}"
+  redirect "/profile_view/#{@profile.user_id}"
 end
 
 get "/sign-in" do
@@ -82,7 +87,7 @@ end
 
 post "/delete_account" do
   @user = User.where(username: params[:username]).first
-  if @user.password == params[:password]
+  if @user && @user.password == params[:password]
     @user.delete()
     session[:user_id]=nil
     flash[:notice] = "Account Deleted!"
@@ -92,17 +97,7 @@ post "/delete_account" do
   end
 end
 
-get "/profile_view/:user_id" do
-  @profile = Profile.where(user_id: params[:user_id]).first
-  if session[:user_id]
-    if @current_user.nil?
-      @current_user=session[:user_id]
-    end
-    puts "Show current user- #{@current_user}"
-  end
-  erb :profile_view
-end
-
+# Profiles Table Routes
 get "/profile_edit/:id" do
   if session[:user_id]
     @current_user=session[:user_id]
@@ -130,10 +125,27 @@ post "/profile_edit/:id" do
   redirect "/profile_view/#{@profile.user_id}"
 end
 
-# //posts
+get "/profile_view/:user_id" do
+  @profile = Profile.where(user_id: params[:user_id]).first
+  if session[:user_id]
+    if @current_user.nil?
+      @current_user=session[:user_id]
+    end
+    puts "Show current user- #{@current_user}"
+  end
+  erb :profile_view
+end
 
+# Posts Table Routes
 get "/post_create/:id" do
-  erb  :post
+  if session[:user_id]
+  	@current_user=session[:user_id]
+  	puts "Show current user- #{@current_user}"
+  else
+  	flash[:notice] = "Login Timed-out"
+  	redirect "/"
+  end
+  erb  :post_create
 end
 
 post '/post_create' do
@@ -142,14 +154,20 @@ post '/post_create' do
       @current_user=session[:user_id]
     end
     @post = Post.create(post_body: params[:post_body], post_title: params[:post_title], user_id: session[:user_id])
-    redirect"/show-mypost"
+    redirect"/show-mypost/#{@current_user}"
   else
     flash[:alert] = "Login Timed-out"
     redirect"/"
   end
 end
 
-# Use to show all post for a User
+# Use to show ALL user posts
+get "/posts-all" do
+  @post = Post.all
+  erb :posts_all
+end
+
+# Use to show ALL posts for a SINGLE User
 get "/posts/:user_id" do
   @posts = Post.where(user_id: params[:user_id])
   @post=@posts.reverse
@@ -157,22 +175,53 @@ get "/posts/:user_id" do
   erb :posts_user
 end
 
-# Use for My Post for current_user
-get "/show-mypost/user_id" do
-  # if session[:user_id]
-  #   if @current_user.nil?
-  #     @current_user=session[:user_id]
-  #     @post = Post.where(user_id: @current_user).first
-  #   else
-  #   puts "Show current user- #{@current_user}"
-  # end
+# Use to show ALL posts for CURRENT USER
+get "/show-mypost/:user_id" do
+  @posts = Post.where(user_id: params[:user_id])
+  @post=@posts.reverse
+  @user=User.find(params[:user_id])
   erb :posts_my
 end
 
-# Use to show ALL user posts
-get "/posts-all" do
-  @post = Post.all
-  erb :posts_all
+# Use to show SINGLE post for CURRENT USER
+get "/post-view/:id" do
+  @post = Post.find(params[:id])
+  if session[:user_id]
+    if @current_user.nil?
+      @current_user=session[:user_id]
+    end
+    puts "Show current user- #{@current_user}"
+  end
+  erb :post_view
+end
+
+get "/post-edit/:id" do
+  if session[:user_id]
+    @current_user=session[:user_id]
+    @post = Post.find(params[:id])
+    puts "Show current user- #{@current_user}"
+  else
+    flash[:notice] = "Login Timed-out"
+    redirect "/"
+  end
+  erb :post_edit
+end
+
+put "/post-edit/:id" do
+  @post = Post.find(params[:id])
+  @post.update(post_body: params[:post_body], post_title: params[:post_title])
+  @post.save
+  redirect "/show-mypost/#{@post.user_id}"
+end
+
+post "/post-edit/:id" do
+  redirect "/show-mypost/#{@post.user_id}"
+end
+
+get "/post-delete/:id" do
+  @post = Post.find(params[:id])
+  @post.delete()
+  redirect "/show-mypost/#{@post.user_id}"
 end
 
 # Retrieves all routes list and displays

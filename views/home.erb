@@ -3,9 +3,9 @@
   <% post_ten.each do |post| %>
   <%  usr=User.find(post.user_id) %>
     <article class="home_post_art">
-      <a class="home_post_u" href="/profile_view/<%= post.user_id %>" ><%= usr.username.capitalize%>:</a>
+      <a class="home_post_u" href="/profile_view/<%= post.user_id %>" ><%= usr.username.capitalize%></a>
       <span class="home_post_tp">Checkout <%= usr.username.capitalize%>'s profile</span>
-      <p class="home_post_t"><%= post.post_title %></p>
+      <p class="home_post_t">Title: <%= post.post_title %></p>
       <p class="home_post"><%= post.post_body %></p>
     </article>
   <% end %>

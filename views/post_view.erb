@@ -1,0 +1,6 @@
+<form id="post_ro_f" class="post_f" method="post" action="/post_view/<%= @post.id %>">
+ <input class="post_ro" name="post_title" value="<%= @post.post_title %>" type="text" readonly>
+ <input class="post_ro" name="post_body" value="<%= @post.post_body %>" type="textarea" rows="10" readonly>
+ <a id="post_edt_btn" class="post_ro" href="/post-edit/<%= @post.id %>">Edit</a>
+ <a id="post_del_btn" class="post_ro" href="/post-delete/<%= @post.id %>">Delete</a>
+</form>

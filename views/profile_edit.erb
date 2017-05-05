@@ -4,6 +4,6 @@
     <input class="prof_edt" type="text" name="lname" value="<%= @profile.lname %>" placeholder="Last name" >
     <input class="prof_edt" type="email" name="email" value="<%=@profile.email%>" placeholder="youremali@gmail.com" >
     <input class="prof_edt" type="text" name="bday" value="<%=@profile.bday%>" placeholder="Birthday- mm/dd/yyyy">
-    <textarea  class="prof_edt" name="bio" rows="8" cols="80" value="@profile.bio" placeholder="Tell me about yourself"></textarea>
-    <button id="submit_edit" class="prof_edt" type="submit">Update Profile</button>
+    <input class="prof_edt" type="textarea" name="bio" rows="8" cols="80" value="<%=@profile.bio%>" placeholder="Tell me about yourself"</input>
+    <button id="prof_edt_btn" class="prof_edt" type="submit">Update Profile</button>
 </form>

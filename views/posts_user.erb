@@ -1,10 +1,11 @@
 <input type="hidden" name="current_user" value="<%= @current_user %>">
 <section id="post_user_scroll">
   <a class="post_u" href="/profile_view/<%= @user.id %>" ><%= @user.username.capitalize%></a>
+  <span class="post_tp">Back to <%=@user.username.capitalize%>'s profile</span>
   <% @post.each do |post| %>
     <article class="post_art">
       <p class="post_t"> Title: <%= post.post_title %></p>
-      <p class="post"> Post: <%= post.post_body %></p>
+      <p class="post"><%= post.post_body %></p>
     </article>
   <% end %>
 </section>

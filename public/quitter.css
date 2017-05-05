@@ -142,7 +142,7 @@ footer{
 }
 
 /*  Form Styling for ALL pages*/
-.sign, .prof_ro, .prof_edt, .post{
+.sign, .prof_ro, .prof_edt, .post, .post_ro, .post_edt{
   display: block;
   width: 300px;
   margin-right: 120px;
@@ -168,7 +168,7 @@ footer{
   background-color: #EFE9F4;
 }
 
-#sign_up_btn, #sign_in_btn, #prof_edt_btn, #post_create_btn{
+#sign_up_btn, #sign_in_btn, #prof_edt_btn, #prof_view_post_btn, #post_create_btn, #post_edt_btn, #post_del_btn{
   background-color: #00A6F5;
   font-family: Arial;
   border-radius: 10px;
@@ -492,7 +492,7 @@ padding: 10px;
   font-weight: bold;
   text-align: left;
 }
-.post_u{
+.post_u, .post_tlink{
   display: block;
   border: 1px solid #4C6663;
   margin: 0;
