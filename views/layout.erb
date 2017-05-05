@@ -4,58 +4,54 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/quitter.css">
     <!-- <link rel="stylesheet" href="./animate.css"> -->
-
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
     <title>Welcome to Quitter</title>
   </head>
   <body>
     <div id="lay_container">
-    <header>
-      <nav id="lay_nav">
-        <a id="lay_page_title" href="/"> Quitter.. </a>
-        <div id="logo_images">
-         <img id="lay_poo"src="/images/poo.png" alt="">
-         <img id="lay_bird"src="/images/twitter.png" alt="">
-        </div>
-        <% if @current_user.nil? %>
-          <a id="lay_up" class="layBtn" href="/sign-up">Sign Up</a>
-          <a id="lay_in" class="layBtn" href="/sign-in">Sign In</a>
-        <% else %>
-          <% @profile=Profile.where(user_id: @current_user).first %>
-          <a id="lay_out" class="layBtn" href="/sign-out">Sign Out</a>
+      <header>
+        <nav id="lay_nav">
+          <a id="lay_page_title" href="/"> Quitter.. </a>
+          <div id="logo_images">
+           <img id="lay_poo"src="/images/poo.png" alt="">
+           <img id="lay_bird"src="/images/twitter.png" alt="">
+          </div>
+          <% if @current_user.nil? %>
+            <a id="lay_up" class="layBtn" href="/sign-up">Sign Up</a>
+            <a id="lay_in" class="layBtn" href="/sign-in">Sign In</a>
+          <% else %>
+            <% @profile=Profile.where(user_id: @current_user).first %>
+            <a id="lay_out" class="layBtn" href="/sign-out">Sign Out</a>
 
-          <div class="lay_drop_cnt">
-            <a id="lay_acct" class="layBtn" href="#">Account</a>
-            <div class="lay_drop_dwn">
-              <a class="lay_drop_lnks" href="/post_create/<%= @current_user %>">New Post</a>
-              <a class="lay_drop_lnks" href="/show-mypost/<%= @current_user %>">My Post</a>
-              <a class="lay_drop_lnks" href="/profile_view/<%= @profile.user_id %>">Profile</a>
-              <a class="lay_drop_lnks" href="/sign-out">Sign Out</a>
-            </div>
-          <div>
-          <!-- <a id="lay_prof" class="layBtn" href="/profile_view">Profile</a> -->
+            <div class="lay_drop_cnt">
+              <a id="lay_acct" class="layBtn" href="#">Account</a>
+              <div class="lay_drop_dwn">
+                <a class="lay_drop_lnks" href="/post_create/<%= @current_user %>">New Post</a>
+                <a class="lay_drop_lnks" href="/show-mypost/<%= @current_user %>">My Post</a>
+                <a class="lay_drop_lnks" href="/profile_view/<%= @profile.user_id %>">Profile</a>
+                <a class="lay_drop_lnks" href="/sign-out">Sign Out</a>
+              </div>
+            <div>
+            <!-- <a id="lay_prof" class="layBtn" href="/profile_view">Profile</a> -->
+          <% end %>
+        </nav>
+      </header>
+      <div class="lay_background">
+        <img id="lay_words"src="/images/words.png" alt="">
+        <% if flash[:notice] %>
+          <div id="notice">
+            <%= flash[:notice]%>
+          </div>
         <% end %>
-      </nav>
-    </header>
-    <div class="lay_background">
-      <img id="lay_words"src="/images/words.png" alt="">
-    <% if flash[:notice] %>
-      <div id="notice">
-        <%= flash[:notice]%>
+        <% if flash[:alert] %>
+          <div id="alert">
+            <%= flash[:alert]%>
+          </div>
+          <% end %>
+          <%= yield %>
       </div>
-    <% end %>
-
-    <% if flash[:alert] %>
-      <div id="alert">
-        <%= flash[:alert]%>
-      </div>
-    <% end %>
-
-      <%= yield %>
+      <footer></footer>
     </div>
-    <footer>
-    </footer>
-  </div>
       <!-- <script type"text/javascript" src="quitter.js"></script> -->
   </body>
 </html>

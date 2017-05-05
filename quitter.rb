@@ -22,7 +22,7 @@ def my_post
     @posts=Post.where(user_id: @current_user)
     @post=@posts.reverse
   else
-    flash[:notice] = "Login Timed-out"
+    flash[:alert] = "Login Timed-out"
     redirect "/"
   end
 end
@@ -80,20 +80,47 @@ get "/sign-out" do
   redirect "/"
 end
 
-get "/delete_account" do
-  puts "Show current user- #{@current_user}"
-  erb :account_delete
+get "/delete_account/:id" do
+  @user = User.find(params[:id])
+  if session[:user_id]
+    @current_user=session[:user_id]
+    if @current_user == @user.id
+      puts "Show current user- #{@current_user}"
+    else
+      flash[:notice] = "You do not have permission to delete account"
+      redirect "/"
+    end
+  else
+    flash[:alert] = "Login Timed-out"
+    redirect "/"
+  end
+    erb :account_delete
 end
 
-post "/delete_account" do
-  @user = User.where(username: params[:username]).first
-  if @user && @user.password == params[:password]
-    @user.delete()
-    session[:user_id]=nil
-    flash[:notice] = "Account Deleted!"
-    redirect "/"
+post "/delete_account/:id" do
+  if session[:user_id]
+    @current_user=session[:user_id]
+    @user = User.find(params[:id])
+    if @user && @user.password == params[:password]
+      @posts=Post.where(user_id: @user.id)
+      if @posts
+        @posts.each do |post|
+          post.delete()
+        end
+      end
+      @profile=Profile.where(user_id: @user.id).first
+      @profile.delete()
+      @user.delete()
+      session[:user_id]=nil
+      flash[:notice] = "Account Deleted!"
+      puts "Account Deleted!"
+      redirect "/"
+    else
+      puts "failed to delete"
+    end
   else
-    puts "failed to delete"
+    flash[:alert] = "Login Timed-out"
+    redirect "/"
   end
 end
 
@@ -104,7 +131,7 @@ get "/profile_edit/:id" do
     @profile = Profile.find(params[:id])
     puts "Show current user- #{@current_user}"
   else
-    flash[:notice] = "Login Timed-out"
+    flash[:alert] = "Login Timed-out"
     redirect "/"
   end
   erb :profile_edit
@@ -142,7 +169,7 @@ get "/post_create/:id" do
   	@current_user=session[:user_id]
   	puts "Show current user- #{@current_user}"
   else
-  	flash[:notice] = "Login Timed-out"
+  	flash[:alert] = "Login Timed-out"
   	redirect "/"
   end
   erb  :post_create
@@ -169,6 +196,9 @@ end
 
 # Use to show ALL posts for a SINGLE User
 get "/posts/:user_id" do
+  if session[:user_id]
+      @current_user=session[:user_id]
+  end
   @posts = Post.where(user_id: params[:user_id])
   @post=@posts.reverse
   @user=User.find(params[:user_id])
@@ -201,7 +231,7 @@ get "/post-edit/:id" do
     @post = Post.find(params[:id])
     puts "Show current user- #{@current_user}"
   else
-    flash[:notice] = "Login Timed-out"
+    flash[:alert] = "Login Timed-out"
     redirect "/"
   end
   erb :post_edit

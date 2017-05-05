@@ -11,6 +11,7 @@
     <input class="prof_ro" type="textarea" name="bio" rows="8" cols="80" value="<%=@profile.bio%>" placeholder="Tell me about yourself" readonly></input>
     <% if @current_user == @profile.user_id %>
     <a id="prof_edt_btn" class="prof_ro" href="/profile_edit/<%= @profile.id %>">Edit Profile</a>
+    <a id="prof_del_btn" class="prof_ro" href="/delete_account/<%= @profile.user_id %>">Delete Account</a>
     <% else %>
     <a id="prof_view_post_btn" class="prof_ro" href="/posts/<%= @profile.user_id %>">Catch up with <%= @profile.fname.capitalize%>'s post</a>
     <% end %>
